@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navbar.scss";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const toggleMenu = () => {
+    setIsAnimating(true);
+    setIsOpen(!isOpen);
+
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 1000);
+  };
+
   return (
     <nav>
       <div className="logo-wrapper">
@@ -9,8 +21,12 @@ const Navbar = () => {
         <div className="triangle"></div>
       </div>
 
-      <button className="toggle-menu-button">
-        <i class="fa-solid fa-bars"></i>
+      <button className="toggle-menu-button" onClick={toggleMenu}>
+        <i
+          className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"} ${
+            isAnimating ? (isOpen ? "rotate-right" : "rotate-left") : ""
+          }`}
+        ></i>
       </button>
 
       <ul className="nav-items">
