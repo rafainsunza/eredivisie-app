@@ -39,14 +39,16 @@
     height: 0;
     width: 100%;
     max-width: 900px;
+    padding: $nav-items-padding;
+    visibility: hidden;
     overflow: hidden;
     font-family: $primary-font;
     background-color: $mobile-menu-background;
-    transition: height 0.3s ease, width 0.3s ease;
+    transition: height 0.3s ease, width 0.3s ease, visibility 0.17s ease;
 
     &.open {
       height: 100%;
-      padding: $nav-items-padding;
+      visibility: visible;
     }
 
     @media (min-width: $breakpoint-sm) {
@@ -69,8 +71,9 @@
       background-color: transparent;
       display: flex;
       align-items: center;
-      padding-left: 100px;
+      padding: 0 0 0 100px;
       overflow: visible;
+      visibility: visible;
     }
   }
 

@@ -1,47 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { LanguageContext } from "../../context/language-context";
 import "./language-select.scss";
 
 const LanguageSelect = () => {
+  const { language, setLanguage } = useContext(LanguageContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [language, setLanguage] = useState(
-    localStorage.getItem("language") || "nl"
-  );
-  const [translation, setTranslation] = useState({});
-
-  const languageItems = Array.from(
-    document.querySelectorAll(".language-select-item")
-  );
-  const navLinks = Array.from(document.querySelectorAll(".nav-link"));
-
-  const loadLanguageData = useCallback(async (language) => {
-    try {
-      const data = await import(`../../data/languages/${language}.json`);
-      setTranslation(data);
-    } catch (error) {
-      console.log(`Error loading language file: ${language}: ${error}`);
-    }
-  });
-
-  useEffect(() => {
-    navLinks.forEach((link) => {
-      const translationKey = link.classList[1];
-      const translatedText = translation.navbar_top[translationKey];
-
-      link.innerText = translatedText;
-    });
-  }, [translation]);
-
-  useEffect(() => {
-    localStorage.setItem("language", language);
-
-    languageItems.forEach((item) =>
-      item.classList.contains(language)
-        ? item.classList.add("active")
-        : item.classList.remove("active")
-    );
-
-    loadLanguageData(language);
-  }, [language]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -49,6 +12,9 @@ const LanguageSelect = () => {
 
   const handleOutsideClick = (e) => {
     const button = document.querySelector(".language-select-toggle");
+    const languageItems = Array.from(
+      document.querySelectorAll(".language-select-item")
+    );
 
     if (
       languageItems.includes(e.target) ||
@@ -60,12 +26,17 @@ const LanguageSelect = () => {
     }
   };
 
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   const handleLanguageChange = (newLanguage) => {
     setLanguage(newLanguage);
     toggleMenu();
   };
-
-  document.addEventListener("click", (e) => handleOutsideClick(e));
 
   return (
     <div className="language-select-wrapper">

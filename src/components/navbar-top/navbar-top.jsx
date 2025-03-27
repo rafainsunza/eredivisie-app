@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { LanguageContext } from "../../context/language-context";
 import LanguageSelect from "../language-select/language-select";
 import "./navbar-top.scss";
 
 const NavbarTop = () => {
+  const { translations } = useContext(LanguageContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -15,9 +17,28 @@ const NavbarTop = () => {
     }, 1000);
   };
 
-  window.addEventListener("resize", () => {
-    window.innerWidth >= 1024 ? setIsOpen(false) : null;
-  });
+  useEffect(() => {
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach((link) => {
+      const key = link.classList[1];
+      link.innerText = translations.navbar_top?.[key];
+    });
+  }, [translations]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <nav className="nav-header">
@@ -39,19 +60,27 @@ const NavbarTop = () => {
 
       <ul className={`nav-items ${isOpen ? "open" : ""}`}>
         <li className="nav-item">
-          <a href="" className="nav-link standings"></a>
+          <a href="" className="nav-link standings">
+            {/* {translations.navbar_top?.standings} */}
+          </a>
         </li>
 
         <li className="nav-item">
-          <a href="" className="nav-link schedule"></a>
+          <a href="" className="nav-link schedule">
+            {/* {translations.navbar_top?.schedule} */}
+          </a>
         </li>
 
         <li className="nav-item">
-          <a href="" className="nav-link clubs"></a>
+          <a href="" className="nav-link clubs">
+            {/* {translations.navbar_top?.clubs} */}
+          </a>
         </li>
 
         <li className="nav-item">
-          <a href="" className="nav-link topscorers"></a>
+          <a href="" className="nav-link topscorers">
+            {/* {translations.navbar_top?.topscorers} */}
+          </a>
         </li>
 
         <li className="nav-item">
