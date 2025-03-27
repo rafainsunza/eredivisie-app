@@ -1,0 +1,68 @@
+@import "../../styles/variables.scss";
+
+.language-select {
+  &-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &-flag {
+    height: 100%;
+    width: 100%;
+    &-container {
+      display: flex;
+      width: 20px;
+      height: 14px;
+      margin: 0 $spacing-xs;
+    }
+  }
+
+  &-toggle {
+    background-color: transparent;
+    border: none;
+    padding: 0 $spacing-xs;
+    font-family: $primary-font;
+    font-weight: 600;
+    font-size: $language-select-fontszie;
+    color: $language-select-text-color;
+
+    &:hover {
+      cursor: pointer;
+      color: $navbar-link-hover-color;
+    }
+
+    & i {
+      font-size: $fontsize-sm;
+    }
+  }
+
+  &-menu {
+    display: none;
+    position: absolute;
+    outline: 1px solid $grey;
+    background-color: $blue;
+    width: 40px;
+    left: 35px;
+    top: 25px;
+
+    &.open {
+      display: block;
+    }
+  }
+
+  &-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    &:hover {
+      cursor: pointer;
+      background-color: $navbar-link-hover-color;
+    }
+
+    &.active {
+      background-color: $navbar-link-hover-color;
+    }
+  }
+}

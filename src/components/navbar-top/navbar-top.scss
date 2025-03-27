@@ -1,13 +1,5 @@
 @import "../../styles/variables.scss";
 
-nav {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  height: 70px;
-  background-color: $navbar-background;
-}
-
 .triangle {
   position: absolute;
   height: 0;
@@ -32,46 +24,12 @@ nav {
 }
 
 .nav {
-  &-link {
-    color: $navbar-link-color;
-    font-size: $navlink-mobile-fontsize;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: $navbar-link-hover-color;
-    }
-
-    @media (min-width: $breakpoint-lg) {
-      font-size: $navlink-fontsize;
-    }
-  }
-
-  &-item {
-    padding: $nav-item-padding;
-    @media (min-width: $breakpoint-lg) {
-      padding: $nav-item-padding-desktop;
-    }
-
-    &:last-of-type {
-      width: 100%;
-      padding: $language-select-padding;
-      margin-top: 50px;
-      border-top: 1px solid $light-grey;
-      border-bottom: 1px solid $light-grey;
-      color: white;
-
-      @media (min-width: $breakpoint-lg) {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        width: auto;
-        padding: $language-select-padding-desktop;
-        margin: 0 0 0 auto;
-        border-left: 1px solid $light-grey;
-      }
-    }
+  &-header {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 70px;
+    background-color: $navbar-background;
   }
 
   &-items {
@@ -112,6 +70,49 @@ nav {
       display: flex;
       align-items: center;
       padding-left: 100px;
+      overflow: visible;
+    }
+  }
+
+  &-item {
+    padding: $nav-item-padding;
+    @media (min-width: $breakpoint-lg) {
+      padding: $nav-item-padding-desktop;
+    }
+
+    &:last-of-type {
+      width: 100%;
+      padding: $language-select-padding;
+      margin-top: 50px;
+      border-top: 1px solid $light-grey;
+      border-bottom: 1px solid $light-grey;
+      color: white;
+
+      @media (min-width: $breakpoint-lg) {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        width: auto;
+        padding: $language-select-padding-desktop;
+        margin: 0 0 0 auto;
+        border-left: 1px solid $light-grey;
+      }
+    }
+  }
+
+  &-link {
+    color: $navbar-link-color;
+    font-size: $navlink-mobile-fontsize;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $navbar-link-hover-color;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: $navlink-fontsize;
     }
   }
 }

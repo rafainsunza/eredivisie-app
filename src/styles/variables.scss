@@ -8,6 +8,7 @@ $white: #fff;
 $dark-blue: rgb(30, 0, 128);
 $blue: #220090;
 $green: rgb(0, 216, 190);
+$grey: rgba(255, 255, 255, 0.6);
 $light-grey: rgba(255, 255, 255, 0.2);
 
 $spacing-xs: 5px;
@@ -17,6 +18,7 @@ $spacing-md-lg: 35px;
 $spacing-lg: 50px;
 
 $fontsize-sm: 14px;
+$fontsize-sm-md: 16px;
 $fontsize-md: 24px;
 
 $breakpoint-xs: 320px;
@@ -37,7 +39,7 @@ $toggle-mobile-menu-color: $white;
 
 // spacing
 $navbar-logo-padding: 0 $spacing-md;
-$nav-items-padding: $spacing-md;
+$nav-items-padding: $spacing-lg $spacing-md;
 $nav-item-padding: $spacing-sm 0;
 $nav-item-padding-desktop: 0 $spacing-sm;
 $navlink-mobile-fontsize: $fontsize-md;
@@ -45,3 +47,10 @@ $navlink-fontsize: $fontsize-sm;
 $language-select-padding: $spacing-md-lg 0;
 $language-select-padding-desktop: $spacing-sm $spacing-lg;
 $toggle-menu-button-padding: $spacing-xs;
+
+// ---------- LANGUAGE SELECT ---------- //
+// colors
+$language-select-text-color: $white;
+$language-select-fontszie: $fontsize-sm-md;
+
+// spacing

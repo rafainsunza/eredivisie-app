@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./navbar.scss";
+import LanguageSelect from "../language-select/language-select";
+import "./navbar-top.scss";
 
-const Navbar = () => {
+const NavbarTop = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -19,7 +20,7 @@ const Navbar = () => {
   });
 
   return (
-    <nav>
+    <nav className="nav-header">
       <div className="logo-wrapper">
         <a href="">
           <img src="assets/images/eredivisie-white.png" className="logo" />
@@ -61,10 +62,12 @@ const Navbar = () => {
           </a>
         </li>
 
-        <li className="nav-item language-select">NL</li>
+        <li className="nav-item">
+          <LanguageSelect />
+        </li>
       </ul>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavbarTop;
