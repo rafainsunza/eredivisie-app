@@ -1,5 +1,47 @@
-$primary-color: #220090;
-$secondary-color: #ec1846;
+@import url("https://fonts.googleapis.com/css2?family=Boldonse&display=swap");
 
-$primary-text-color: #fff;
-$secondary-text-color: #220090;
+$primary-font: "Verdana", system-ui;
+$secondary-font: "Boldonse", system-ui;
+
+$red: #ec1846;
+$white: #fff;
+$dark-blue: rgb(30, 0, 128);
+$blue: #220090;
+$green: rgb(0, 216, 190);
+$light-grey: rgba(255, 255, 255, 0.2);
+
+$spacing-xs: 5px;
+$spacing-sm: 15px;
+$spacing-md: 25px;
+$spacing-md-lg: 35px;
+$spacing-lg: 50px;
+
+$fontsize-sm: 14px;
+$fontsize-md: 24px;
+
+$breakpoint-xs: 320px;
+$breakpoint-sm: 480px;
+$breakpoint-sm-md: 600px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// ---------- NAVBAR ---------- //
+// colors
+$navbar-background: $blue;
+$navbar-background-secondary: $red;
+$navbar-link-color: $white;
+$navbar-link-hover-color: $green;
+$mobile-menu-background: $dark-blue;
+$toggle-mobile-menu-color: $white;
+
+// spacing
+$navbar-logo-padding: 0 $spacing-md;
+$nav-items-padding: $spacing-md;
+$nav-item-padding: $spacing-sm 0;
+$nav-item-padding-desktop: 0 $spacing-sm;
+$navlink-mobile-fontsize: $fontsize-md;
+$navlink-fontsize: $fontsize-sm;
+$language-select-padding: $spacing-md-lg 0;
+$language-select-padding-desktop: $spacing-sm $spacing-lg;
+$toggle-menu-button-padding: $spacing-xs;

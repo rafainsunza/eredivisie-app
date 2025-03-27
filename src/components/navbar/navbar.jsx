@@ -14,10 +14,17 @@ const Navbar = () => {
     }, 1000);
   };
 
+  window.addEventListener("resize", () => {
+    window.innerWidth >= 1024 ? setIsOpen(false) : null;
+  });
+
   return (
     <nav>
       <div className="logo-wrapper">
-        <img src="assets/images/eredivisie-white.png" className="logo" />
+        <a href="">
+          <img src="assets/images/eredivisie-white.png" className="logo" />
+        </a>
+
         <div className="triangle"></div>
       </div>
 
@@ -29,7 +36,7 @@ const Navbar = () => {
         ></i>
       </button>
 
-      <ul className="nav-items">
+      <ul className={`nav-items ${isOpen ? "open" : ""}`}>
         <li className="nav-item">
           <a href="" className="nav-link clubs">
             Clubs
@@ -53,6 +60,8 @@ const Navbar = () => {
             Topscorers
           </a>
         </li>
+
+        <li className="nav-item language-select">NL</li>
       </ul>
     </nav>
   );
