@@ -39,27 +39,19 @@ const NavbarTop = () => {
 
       <ul className={`nav-items ${isOpen ? "open" : ""}`}>
         <li className="nav-item">
-          <a href="" className="nav-link clubs">
-            Clubs
-          </a>
+          <a href="" className="nav-link standings"></a>
         </li>
 
         <li className="nav-item">
-          <a href="" className="nav-link standings">
-            Stand
-          </a>
+          <a href="" className="nav-link schedule"></a>
         </li>
 
         <li className="nav-item">
-          <a href="" className="nav-link schedule">
-            Programma & uitslagen
-          </a>
+          <a href="" className="nav-link clubs"></a>
         </li>
 
         <li className="nav-item">
-          <a href="" className="nav-link topscorers">
-            Topscorers
-          </a>
+          <a href="" className="nav-link topscorers"></a>
         </li>
 
         <li className="nav-item">
