@@ -41,53 +41,47 @@ const NavbarTop = () => {
   }, []);
 
   return (
-    <nav className="nav-header">
-      <div className="logo-wrapper">
-        <a href="">
-          <img src="assets/images/eredivisie-white.png" className="logo" />
-        </a>
-
-        <div className="triangle"></div>
-      </div>
-
-      <button className="toggle-menu-button" onClick={toggleMenu}>
-        <i
-          className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"} ${
-            isAnimating ? (isOpen ? "rotate-right" : "rotate-left") : ""
-          }`}
-        ></i>
-      </button>
-
-      <ul className={`nav-items ${isOpen ? "open" : ""}`}>
-        <li className="nav-item">
-          <a href="" className="nav-link standings">
-            {/* {translations.navbar_top?.standings} */}
+    <div className="nav-wrapper">
+      <nav className="nav-header">
+        <div className="logo-wrapper">
+          <a href="">
+            <img src="assets/images/eredivisie-white.png" className="logo" />
           </a>
-        </li>
 
-        <li className="nav-item">
-          <a href="" className="nav-link schedule">
-            {/* {translations.navbar_top?.schedule} */}
-          </a>
-        </li>
+          <div className="triangle"></div>
+        </div>
 
-        <li className="nav-item">
-          <a href="" className="nav-link clubs">
-            {/* {translations.navbar_top?.clubs} */}
-          </a>
-        </li>
+        <button className="toggle-menu-button" onClick={toggleMenu}>
+          <i
+            className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"} ${
+              isAnimating ? (isOpen ? "rotate-right" : "rotate-left") : ""
+            }`}
+          ></i>
+        </button>
 
-        <li className="nav-item">
-          <a href="" className="nav-link topscorers">
-            {/* {translations.navbar_top?.topscorers} */}
-          </a>
-        </li>
+        <ul className={`nav-items ${isOpen ? "open" : ""}`}>
+          <li className="nav-item">
+            <a href="" className="nav-link standings"></a>
+          </li>
 
-        <li className="nav-item">
-          <LanguageSelect />
-        </li>
-      </ul>
-    </nav>
+          <li className="nav-item">
+            <a href="" className="nav-link schedule"></a>
+          </li>
+
+          <li className="nav-item">
+            <a href="" className="nav-link clubs"></a>
+          </li>
+
+          <li className="nav-item">
+            <a href="" className="nav-link topscorers"></a>
+          </li>
+
+          <li className="nav-item">
+            <LanguageSelect />
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 };
 

@@ -1,14 +1,15 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .banner-top {
   &-outer {
-    background-color: $blue;
+    background-color: variables.$blue;
   }
 
   &-wrapper {
     height: 270px;
+    max-width: 1000px;
     margin: 0 auto;
-    background-color: $blue;
+    background-color: variables.$blue;
   }
 
   &-background {
@@ -16,30 +17,35 @@
     align-items: flex-end;
     height: 100%;
     width: 100%;
-    padding: 0 $spacing-md $spacing-lg $spacing-md;
+    padding: variables.$spacing-lg variables.$spacing-sm;
 
     background-image: url("assets/images/eredivisie-brand-stamp.png");
     background-size: 525px;
     background-repeat: no-repeat;
     background-position: right;
 
-    @media (min-width: $breakpoint-sm-md) {
+    @media (min-width: variables.$breakpoint-sm-md) {
       background-size: 600px;
+      padding: variables.$spacing-lg variables.$spacing-md;
     }
 
-    @media (min-width: $breakpoint-md-lg) {
+    @media (min-width: variables.$breakpoint-md-lg) {
       background-size: 1000px;
+    }
+
+    @media (min-width: variables.$breakpoint-lg) {
+      padding: variables.$spacing-lg 0;
     }
   }
 
   &-title {
     width: max-content;
-    font-family: $secondary-font;
-    font-size: $fontsize-lg;
-    color: $title-color;
+    font-family: variables.$secondary-font;
+    font-size: variables.$fontsize-lg;
+    color: variables.$white;
 
-    @media (min-width: $breakpoint-sm-md) {
-      font-size: $fontsize-xl;
+    @media (min-width: variables.$breakpoint-sm-md) {
+      font-size: variables.$fontsize-xl;
     }
   }
 }

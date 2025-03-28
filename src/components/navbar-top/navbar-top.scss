@@ -1,11 +1,11 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .triangle {
   position: absolute;
   height: 0;
   width: 0;
   right: -69px;
-  border-bottom: 71px solid $navbar-background-secondary;
+  border-bottom: 71px solid variables.$red;
   border-right: 70px solid transparent;
 }
 
@@ -17,20 +17,33 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    max-width: 250px;
-    padding: $navbar-logo-padding;
-    background-color: $navbar-background-secondary;
+    max-width: 60px;
+    background-color: variables.$red;
   }
 }
 
 .nav {
+  &-wrapper {
+    background: linear-gradient(
+      to right,
+      variables.$red 50%,
+      variables.$blue 50%
+    );
+    padding: 0 variables.$spacing-sm;
+
+    @media (min-width: variables.$breakpoint-sm-md) {
+      padding: 0 variables.$spacing-md;
+    }
+  }
+
   &-header {
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 5fr;
     height: 70px;
-    background-color: $navbar-background;
+    background-color: variables.$blue;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   &-items {
@@ -39,12 +52,11 @@
     top: 70px;
     height: 0;
     width: 100%;
-    max-width: 900px;
-    padding: $nav-items-padding;
+    padding: variables.$spacing-lg variables.$spacing-md;
     visibility: hidden;
     overflow: hidden;
-    font-family: $primary-font;
-    background-color: $mobile-menu-background;
+    font-family: variables.$primary-font;
+    background-color: variables.$dark-blue;
     transition: height 0.3s ease, width 0.3s ease, visibility 0.17s ease;
 
     &.open {
@@ -52,11 +64,11 @@
       visibility: visible;
     }
 
-    @media (min-width: $breakpoint-sm) {
+    @media (min-width: variables.$breakpoint-sm) {
       width: 400px;
     }
 
-    @media (min-width: $breakpoint-sm-md) {
+    @media (min-width: variables.$breakpoint-sm-md) {
       width: 0;
       height: 100%;
 
@@ -65,77 +77,78 @@
       }
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: variables.$breakpoint-lg) {
       position: static;
       height: 100%;
       width: 100%;
+      padding: 0;
       background-color: transparent;
       display: flex;
       align-items: center;
-      padding: 0 0 0 100px;
       overflow: visible;
       visibility: visible;
     }
   }
 
   &-item {
-    padding: $nav-item-padding;
-    @media (min-width: $breakpoint-lg) {
-      padding: $nav-item-padding-desktop;
+    padding: variables.$spacing-sm 0;
+    @media (min-width: variables.$breakpoint-lg) {
+      padding: 0 variables.$spacing-sm;
     }
 
     &:last-of-type {
       width: 100%;
-      padding: $language-select-padding;
+      padding: variables.$spacing-md-lg 0;
       margin-top: 50px;
-      border-top: 1px solid $light-grey;
-      border-bottom: 1px solid $light-grey;
-      color: white;
+      border-top: 1px solid variables.$light-grey;
+      border-bottom: 1px solid variables.$light-grey;
+      color: variables.$white;
 
-      @media (min-width: $breakpoint-lg) {
+      @media (min-width: variables.$breakpoint-lg) {
         width: auto;
-        padding: $language-select-padding-desktop;
+        padding: variables.$spacing-sm 0 variables.$spacing-sm
+          variables.$spacing-lg;
         margin: 0 0 0 auto;
         border: 0;
-        border-left: 1px solid $light-grey;
+        border-left: 1px solid variables.$light-grey;
       }
     }
   }
 
   &-link {
-    color: $navbar-link-color;
-    font-size: $navlink-mobile-fontsize;
+    color: variables.$white;
+    font-size: variables.$fontsize-md;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s ease;
 
     &:hover {
-      color: $navbar-link-hover-color;
+      color: variables.$green;
     }
 
-    @media (min-width: $breakpoint-lg) {
-      font-size: $navlink-fontsize;
+    @media (min-width: variables.$breakpoint-lg) {
+      font-size: variables.$fontsize-sm;
     }
   }
 }
 
 .toggle-menu-button {
   position: absolute;
-  right: 25px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
-  padding: $toggle-menu-button-padding;
+  padding: variables.$spacing-xs;
   border: none;
-  color: $toggle-mobile-menu-color;
+  color: variables.$white;
   background-color: transparent;
-  font-size: 20px;
+  font-size: 22px;
   transition: transform 0.2s ease-in-out;
 
   &:hover {
     cursor: pointer;
   }
 
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: variables.$breakpoint-lg) {
     display: none;
   }
 }

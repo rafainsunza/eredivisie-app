@@ -1,10 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 import "./styles/main.scss";
 import "./styles/reset.css";
+
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { LanguageProvider } from "./context/language-context";
+
 import NavbarTop from "./components/navbar-top/navbar-top";
-import BannerTop from "./components/banner-top/banner-top";
+import Standings from "./components/standings/standings";
 
 function App() {
   return (
@@ -13,12 +15,7 @@ function App() {
         <NavbarTop />
       </header>
       <main>
-        <BannerTop
-          titleKey={"standings"}
-          hasButtons={false}
-          hasSecondaryTitle={false}
-          hasTitleSpan={false}
-        />
+        <Standings />
       </main>
     </>
   );

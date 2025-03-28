@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .language-select {
   &-wrapper {
@@ -14,34 +14,34 @@
       display: flex;
       width: 20px;
       height: 14px;
-      margin: 0 $spacing-xs;
+      margin: 0 variables.$spacing-xs;
     }
   }
 
   &-toggle {
     background-color: transparent;
     border: none;
-    padding: 0 $spacing-xs;
-    font-family: $primary-font;
+    padding: 0 variables.$spacing-xs;
+    font-family: variables.$primary-font;
     font-weight: 600;
-    font-size: $language-select-fontszie;
-    color: $language-select-text-color;
+    font-size: variables.$fontsize-sm-md;
+    color: variables.$white;
 
     &:hover {
       cursor: pointer;
-      color: $navbar-link-hover-color;
+      color: variables.$green;
     }
 
     & i {
-      font-size: $fontsize-sm;
+      font-size: variables.$fontsize-sm;
     }
   }
 
   &-menu {
     display: none;
     position: absolute;
-    outline: 1px solid $grey;
-    background-color: $blue;
+    outline: 1px solid variables.$grey;
+    background-color: variables.$blue;
     width: 40px;
     left: 35px;
     top: 25px;
@@ -58,11 +58,11 @@
     height: 35px;
     &:hover {
       cursor: pointer;
-      background-color: $navbar-link-hover-color;
+      background-color: variables.$green;
     }
 
     &.active {
-      background-color: $navbar-link-hover-color;
+      background-color: variables.$green;
     }
   }
 }

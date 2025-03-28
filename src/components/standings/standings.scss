@@ -1,0 +1,30 @@
+@use "../../styles/variables.scss";
+
+.standings-page-wrapper {
+  padding: variables.$spacing-lg variables.$spacing-sm;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  @media (min-width: variables.$breakpoint-sm-md) {
+    padding: variables.$spacing-lg variables.$spacing-md;
+  }
+
+  @media (min-width: variables.$breakpoint-lg) {
+    padding: variables.$spacing-lg 0;
+  }
+}
+
+.standings-table {
+  font-family: variables.$primary-font;
+  width: 100%;
+  border-left: 4px solid blue;
+
+  & thead {
+    background-color: variables.$light-blue;
+    color: variables.$white;
+  }
+
+  & tbody {
+    color: variables.$medium-blue;
+  }
+}
