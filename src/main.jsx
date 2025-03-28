@@ -13,7 +13,12 @@ function App() {
         <NavbarTop />
       </header>
       <main>
-        <BannerTop />
+        <BannerTop
+          titleKey={"standings"}
+          hasButtons={false}
+          hasSecondaryTitle={false}
+          hasTitleSpan={false}
+        />
       </main>
     </>
   );

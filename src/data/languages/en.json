@@ -4,5 +4,11 @@
     "schedule": "Fixtures & results",
     "clubs": "Clubs",
     "topscorers": "Top scorers"
+  },
+  "banner_top": {
+    "standings": "table",
+    "schedule": "matchday",
+    "clubs": "clubs",
+    "topscorers": "top scorers"
   }
 }

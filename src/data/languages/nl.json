@@ -4,5 +4,11 @@
     "schedule": "Programma & uitslagen",
     "clubs": "Clubs",
     "topscorers": "Topscorers"
+  },
+  "banner_top": {
+    "standings": "stand",
+    "schedule": "speelronde",
+    "clubs": "clubs",
+    "topscorers": "topscorers"
   }
 }

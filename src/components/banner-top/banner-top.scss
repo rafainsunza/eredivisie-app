@@ -1,0 +1,45 @@
+@import "../../styles/variables.scss";
+
+.banner-top {
+  &-outer {
+    background-color: $blue;
+  }
+
+  &-wrapper {
+    height: 270px;
+    margin: 0 auto;
+    background-color: $blue;
+  }
+
+  &-background {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: 100%;
+    padding: 0 $spacing-md $spacing-lg $spacing-md;
+
+    background-image: url("assets/images/eredivisie-brand-stamp.png");
+    background-size: 525px;
+    background-repeat: no-repeat;
+    background-position: right;
+
+    @media (min-width: $breakpoint-sm-md) {
+      background-size: 600px;
+    }
+
+    @media (min-width: $breakpoint-md-lg) {
+      background-size: 1000px;
+    }
+  }
+
+  &-title {
+    width: max-content;
+    font-family: $secondary-font;
+    font-size: $fontsize-lg;
+    color: $title-color;
+
+    @media (min-width: $breakpoint-sm-md) {
+      font-size: $fontsize-xl;
+    }
+  }
+}

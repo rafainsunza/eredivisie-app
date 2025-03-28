@@ -20,13 +20,16 @@ $spacing-lg: 50px;
 $fontsize-sm: 14px;
 $fontsize-sm-md: 16px;
 $fontsize-md: 24px;
+$fontsize-lg: 36px;
+$fontsize-xl: 48px;
 
 $breakpoint-xs: 320px;
 $breakpoint-sm: 480px;
 $breakpoint-sm-md: 600px;
 $breakpoint-md: 768px;
+$breakpoint-md-lg: 900px;
 $breakpoint-lg: 1024px;
-$breakpoint-xl: 1280px;
+$breakpoint-xl: 1150px;
 
 // ---------- NAVBAR ---------- //
 // colors
@@ -53,4 +56,7 @@ $toggle-menu-button-padding: $spacing-xs;
 $language-select-text-color: $white;
 $language-select-fontszie: $fontsize-sm-md;
 
-// spacing
+// ---------- BANNER TOP ---------- //
+// colors
+$title-color: $white;
+$title-size: $fontsize-lg;
