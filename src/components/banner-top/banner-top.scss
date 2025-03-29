@@ -3,22 +3,6 @@
 .banner-top {
   &-outer {
     background-color: variables.$blue;
-  }
-
-  &-wrapper {
-    height: 270px;
-    max-width: 1150px;
-    margin: 0 auto;
-    background-color: variables.$blue;
-  }
-
-  &-background {
-    display: flex;
-    align-items: flex-end;
-    height: 100%;
-    width: 100%;
-    padding: variables.$spacing-lg variables.$spacing-sm;
-
     background-image: url("assets/images/eredivisie-brand-stamp.png");
     background-size: 525px;
     background-repeat: no-repeat;
@@ -26,11 +10,23 @@
 
     @media (min-width: variables.$breakpoint-sm-md) {
       background-size: 600px;
-      padding: variables.$spacing-lg variables.$spacing-md;
     }
 
     @media (min-width: variables.$breakpoint-md-lg) {
       background-size: 1000px;
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: flex-end;
+    height: 270px;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: variables.$spacing-lg variables.$spacing-sm;
+
+    @media (min-width: variables.$breakpoint-sm-md) {
+      padding: variables.$spacing-lg variables.$spacing-md;
     }
   }
 

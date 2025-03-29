@@ -14,6 +14,15 @@
   "standings": {
     "winlose_ratio": "W | L | D",
     "scored_conceded": "GS-GC",
-    "goal_difference": "GD"
+    "goal_difference": "GD",
+    "legend": {
+      "title": "LEGEND",
+      "champions_league": "UEFA Champions League (league phase)",
+      "champions_league_qualifying": "UEFA Champions League (qualifying round)",
+      "europa_league": "UEFA Europa League (league phase)",
+      "conference_league": "UEFA Europa Conference League (qualifying round)",
+      "relegation_playoffs": "Keuken Kampioen Play-Offs",
+      "relegation": "Keuken Kampioen Divisie (relegated)"
+    }
   }
 }

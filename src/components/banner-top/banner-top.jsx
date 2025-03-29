@@ -21,19 +21,15 @@ const BannerTop = ({
   return (
     <div className="banner-top-outer">
       <div className="banner-top-wrapper">
-        <div className="banner-top-background">
-          <h1 className="banner-top-title">
-            {titleText.toUpperCase()}
+        <h1 className="banner-top-title">
+          {titleText.toUpperCase()}
 
-            {hasTitleSpan && <span className="banner-top-title-span"></span>}
-          </h1>
+          {hasTitleSpan && <span className="banner-top-title-span"></span>}
+        </h1>
 
-          {hasSecondaryTitle && (
-            <h2 className="banner-top-secondary-title"></h2>
-          )}
+        {hasSecondaryTitle && <h2 className="banner-top-secondary-title"></h2>}
 
-          {hasButtons && <div className="banner-top-buttons"></div>}
-        </div>
+        {hasButtons && <div className="banner-top-buttons"></div>}
       </div>
     </div>
   );

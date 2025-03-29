@@ -12,6 +12,13 @@ const Standings = () => {
     winlose_ratio: "",
     scored_conceded: "",
     goal_difference: "",
+    title: "",
+    champions_league: "",
+    champions_league_qualifying: "",
+    europa_league: "",
+    conference_league: "",
+    relegation_playoffs: "",
+    relegation: "",
   });
 
   useEffect(() => {
@@ -46,6 +53,16 @@ const Standings = () => {
         winlose_ratio: translations?.standings?.["winlose_ratio"],
         scored_conceded: translations?.standings?.["scored_conceded"],
         goal_difference: translations?.standings?.["goal_difference"],
+        title: translations?.standings?.legend?.["title"],
+        champions_league: translations?.standings?.legend?.["champions_league"],
+        champions_league_qualifying:
+          translations?.standings?.legend?.["champions_league_qualifying"],
+        europa_league: translations?.standings?.legend?.["europa_league"],
+        conference_league:
+          translations?.standings?.legend?.["conference_league"],
+        relegation_playoffs:
+          translations?.standings?.legend?.["relegation_playoffs"],
+        relegation: translations?.standings?.legend?.["relegation"],
       });
     }
   }, [translations]);
@@ -229,25 +246,31 @@ const Standings = () => {
         </div>
 
         <div className="standings-legend-wrapper">
-          <h2 className="standings-legend-title"></h2>
+          <h2 className="standings-legend-title">{texts.title}</h2>
           <ul className="standings-legend">
             <li className="standings-legend-item">
-              <span className="standings-legend-color"></span>
+              <div className="standings-legend-color blue"></div>
+              {texts.champions_league}
             </li>
             <li className="standings-legend-item">
-              <span className="standings-legend-color"></span>
+              <div className="standings-legend-color dark-blue"></div>
+              {texts.champions_league_qualifying}
             </li>
             <li className="standings-legend-item">
-              <span className="standings-legend-color"></span>
+              <div className="standings-legend-color orange"></div>
+              {texts.europa_league}
             </li>
             <li className="standings-legend-item">
-              <span className="standings-legend-color"></span>
+              <div className="standings-legend-color green"></div>
+              {texts.conference_league}
             </li>
             <li className="standings-legend-item">
-              <span className="standings-legend-color"></span>
+              <div className="standings-legend-color light-red"></div>
+              {texts.relegation_playoffs}
             </li>
             <li className="standings-legend-item">
-              <span className="standings-legend-color"></span>
+              <div className="standings-legend-color red"></div>
+              {texts.relegation}
             </li>
           </ul>
         </div>
