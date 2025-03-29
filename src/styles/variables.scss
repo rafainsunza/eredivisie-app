@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Boldonse&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
-$primary-font: "Verdana", system-ui;
+$primary-font: "Josefin Sans", system-ui;
 $secondary-font: "Boldonse", system-ui;
 
 $red: #ec1846;
@@ -11,6 +12,7 @@ $medium-blue: #4d32a5;
 $light-blue: #0600ff;
 $green: rgb(0, 216, 190);
 $grey: rgba(255, 255, 255, 0.6);
+$medium-grey: #f6f6f6;
 $light-grey: rgba(255, 255, 255, 0.2);
 
 $spacing-xs: 5px;
@@ -18,9 +20,11 @@ $spacing-sm: 10px;
 $spacing-md: 25px;
 $spacing-md-lg: 35px;
 $spacing-lg: 50px;
+$spacing-xl: 100px;
 
-$fontsize-sm: 14px;
-$fontsize-sm-md: 16px;
+$fontsize-xs: 14.5px;
+$fontsize-sm: 16px;
+$fontsize-sm-md: 18px;
 $fontsize-md: 24px;
 $fontsize-lg: 36px;
 $fontsize-xl: 48px;
@@ -31,4 +35,4 @@ $breakpoint-sm-md: 600px;
 $breakpoint-md: 768px;
 $breakpoint-md-lg: 900px;
 $breakpoint-lg: 1024px;
-$breakpoint-xl: 1150px;
+$breakpoint-xl: 1130px;

@@ -10,5 +10,10 @@
     "schedule": "speelronde",
     "clubs": "clubs",
     "topscorers": "topscorers"
+  },
+  "standings": {
+    "winlose_ratio": "W | V | G",
+    "scored_conceded": "DV-DT",
+    "goal_difference": "DS"
   }
 }

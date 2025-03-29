@@ -10,5 +10,10 @@
     "schedule": "matchday",
     "clubs": "clubs",
     "topscorers": "top scorers"
+  },
+  "standings": {
+    "winlose_ratio": "W | L | D",
+    "scored_conceded": "GS-GC",
+    "goal_difference": "GD"
   }
 }

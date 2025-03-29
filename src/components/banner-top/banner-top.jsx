@@ -12,7 +12,7 @@ const BannerTop = ({
   const [titleText, setTitleText] = useState("");
 
   useEffect(() => {
-    // wait for translations to be before rendering the title
+    // wait for translations before rendering
     if (translations?.banner_top) {
       setTitleText(translations?.banner_top?.[titleKey]);
     }

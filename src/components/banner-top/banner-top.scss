@@ -7,7 +7,7 @@
 
   &-wrapper {
     height: 270px;
-    max-width: 1000px;
+    max-width: 1150px;
     margin: 0 auto;
     background-color: variables.$blue;
   }
@@ -32,14 +32,9 @@
     @media (min-width: variables.$breakpoint-md-lg) {
       background-size: 1000px;
     }
-
-    @media (min-width: variables.$breakpoint-lg) {
-      padding: variables.$spacing-lg 0;
-    }
   }
 
   &-title {
-    width: max-content;
     font-family: variables.$secondary-font;
     font-size: variables.$fontsize-lg;
     color: variables.$white;

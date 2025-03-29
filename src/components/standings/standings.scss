@@ -2,29 +2,191 @@
 
 .standings-page-wrapper {
   padding: variables.$spacing-lg variables.$spacing-sm;
-  max-width: 1000px;
+  max-width: 1150px;
   margin: 0 auto;
 
   @media (min-width: variables.$breakpoint-sm-md) {
     padding: variables.$spacing-lg variables.$spacing-md;
   }
 
-  @media (min-width: variables.$breakpoint-lg) {
-    padding: variables.$spacing-lg 0;
+  @media (min-width: variables.$breakpoint-xl) {
+    padding: variables.$spacing-xl variables.$spacing-md;
+  }
+}
+
+.table {
+  &-club-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: variables.$medium-blue;
+  }
+
+  &-club-crest {
+    height: 20px;
+    width: 20px;
+    margin-right: variables.$spacing-sm;
+
+    @media (min-width: variables.$breakpoint-sm) {
+      height: 23px;
+      width: 23px;
+    }
   }
 }
 
 .standings-table {
-  font-family: variables.$primary-font;
   width: 100%;
-  border-left: 4px solid blue;
+  font-family: variables.$primary-font;
 
-  & thead {
-    background-color: variables.$light-blue;
-    color: variables.$white;
+  @media (min-width: variables.$breakpoint-xl) {
+    display: none;
   }
 
-  & tbody {
+  &.left,
+  &.right {
+    display: none;
+
+    @media (min-width: variables.$breakpoint-xl) {
+      display: table;
+    }
+  }
+
+  &-wrapper {
+    @media (min-width: variables.$breakpoint-xl) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: variables.$spacing-md;
+    }
+  }
+
+  & th {
+    text-align: start;
+    width: 40px;
+    padding: variables.$spacing-sm 0;
+    color: variables.$white;
+    font-size: 12px;
+    font-weight: 800;
+    background-color: variables.$light-blue;
+
+    &.rank {
+      text-align: center;
+      font-size: variables.$fontsize-xs;
+      border-left: 4px solid variables.$light-blue;
+    }
+
+    &.club {
+      width: auto;
+    }
+
+    &.winlose-ratio {
+      display: none;
+
+      @media (min-width: variables.$breakpoint-sm-md) {
+        display: table-cell;
+        width: 90px;
+      }
+    }
+
+    &.scored-conceded {
+      display: none;
+
+      @media (min-width: variables.$breakpoint-sm-md) {
+        display: table-cell;
+        width: 60px;
+      }
+    }
+
+    &.points {
+      padding: variables.$spacing-sm variables.$spacing-xs;
+      text-align: end;
+
+      @media (min-width: variables.$breakpoint-sm) {
+        padding: variables.$spacing-sm;
+      }
+    }
+  }
+
+  & td {
+    padding: variables.$spacing-sm 0;
+    text-align: start;
+    vertical-align: middle;
     color: variables.$medium-blue;
+    font-size: variables.$fontsize-xs;
+    font-weight: 400;
+    height: 50px;
+
+    @media (min-width: variables.$breakpoint-sm-md) {
+      font-size: variables.$fontsize-sm;
+    }
+
+    &.rank {
+      font-weight: 800;
+      text-align: center;
+    }
+
+    &.rank1,
+    &.rank2 {
+      border-left: 4px solid variables.$light-blue;
+      border-top: 1px solid variables.$light-blue;
+    }
+
+    &.rank3 {
+      border-left: 4px solid variables.$dark-blue;
+      border-top: 1px solid variables.$dark-blue;
+    }
+
+    &.rank4 {
+      border-left: 4px solid #ff7d05;
+      border-top: 1px solid #ff7d05;
+    }
+
+    &.rank5,
+    &.rank6,
+    &.rank7,
+    &.rank8 {
+      border-left: 4px solid #05d75e;
+      border-top: 1px solid #05d75e;
+    }
+
+    &.rank16 {
+      border-left: 4px solid #e37288;
+      border-top: 1px solid #e37288;
+    }
+
+    &.rank17,
+    &.rank18 {
+      border-left: 4px solid variables.$red;
+      border-top: 1px solid variables.$red;
+    }
+
+    &.club {
+      text-align: start;
+      font-weight: 800;
+    }
+
+    &.winlose-ratio {
+      display: none;
+
+      @media (min-width: variables.$breakpoint-sm-md) {
+        display: table-cell;
+      }
+    }
+
+    &.scored-conceded {
+      display: none;
+
+      @media (min-width: variables.$breakpoint-sm-md) {
+        display: table-cell;
+      }
+    }
+
+    &.points {
+      text-align: center;
+      font-weight: 800;
+    }
+  }
+
+  & tr:nth-child(even) {
+    background-color: variables.$medium-grey;
   }
 }

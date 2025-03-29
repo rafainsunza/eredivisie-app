@@ -42,7 +42,7 @@
     grid-template-columns: 1fr 5fr;
     height: 70px;
     background-color: variables.$blue;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
   }
 
@@ -77,7 +77,7 @@
       }
     }
 
-    @media (min-width: variables.$breakpoint-lg) {
+    @media (min-width: variables.$breakpoint-md) {
       position: static;
       height: 100%;
       width: 100%;
@@ -92,7 +92,7 @@
 
   &-item {
     padding: variables.$spacing-sm 0;
-    @media (min-width: variables.$breakpoint-lg) {
+    @media (min-width: variables.$breakpoint-md) {
       padding: 0 variables.$spacing-sm;
     }
 
@@ -104,7 +104,7 @@
       border-bottom: 1px solid variables.$light-grey;
       color: variables.$white;
 
-      @media (min-width: variables.$breakpoint-lg) {
+      @media (min-width: variables.$breakpoint-md) {
         width: auto;
         padding: variables.$spacing-sm 0 variables.$spacing-sm
           variables.$spacing-lg;
@@ -126,7 +126,7 @@
       color: variables.$green;
     }
 
-    @media (min-width: variables.$breakpoint-lg) {
+    @media (min-width: variables.$breakpoint-md) {
       font-size: variables.$fontsize-sm;
     }
   }
@@ -148,7 +148,7 @@
     cursor: pointer;
   }
 
-  @media (min-width: variables.$breakpoint-lg) {
+  @media (min-width: variables.$breakpoint-md) {
     display: none;
   }
 }
