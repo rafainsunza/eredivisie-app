@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./standings.scss";
 import { LanguageContext } from "../../context/language-context";
-import { getStandings } from "../../services/fetch-data";
+import { getFootballData } from "../../services/fetch-data";
 import BannerTop from "../banner-top/banner-top";
+import BannerBottom from "../navbar-bottom/navbar-bottom";
+import NavbarBottom from "../navbar-bottom/navbar-bottom";
 
 const Standings = () => {
   const { translations } = useContext(LanguageContext);
@@ -36,7 +38,7 @@ const Standings = () => {
   useEffect(() => {
     const fetchStandings = async () => {
       try {
-        const data = await getStandings();
+        const data = await getFootballData();
         setStandings(data.standings[0]?.table);
       } catch (error) {
         console.log("Failed to fetch standings:", error);

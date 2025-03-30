@@ -6,6 +6,7 @@ import ReactDOM from "react-dom/client";
 import { LanguageProvider } from "./context/language-context";
 
 import NavbarTop from "./components/navbar-top/navbar-top";
+import NavbarBottom from "./components/navbar-bottom/navbar-bottom";
 import Standings from "./components/standings/standings";
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
       <main>
         <Standings />
       </main>
+      <footer>
+        <NavbarBottom />
+      </footer>
     </>
   );
 }

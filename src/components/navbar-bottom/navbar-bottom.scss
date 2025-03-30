@@ -1,0 +1,119 @@
+@use "../../styles/variables.scss";
+
+.navbar-bottom {
+  &-outer {
+    background-color: variables.$blue;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px variables.$spacing-sm;
+    max-width: 1150px;
+    margin: 0 auto;
+    background-color: variables.$blue;
+
+    @media (min-width: variables.$breakpoint-sm-md) {
+      padding: 20px;
+    }
+
+    @media (min-width: 1051px) {
+      gap: 30px;
+    }
+
+    @media (min-width: 1081px) {
+      justify-content: space-between;
+    }
+  }
+
+  &-label {
+    text-align: center;
+    font-family: variables.$primary-font;
+    font-size: variables.$fontsize-sm-md;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: variables.$spacing-sm-md;
+
+    @media (min-width: 1051px) {
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: variables.$spacing-md;
+    padding: 7.5px 0;
+  }
+
+  &-link {
+    display: flex;
+    width: variables.$spacing-md;
+    height: variables.$spacing-md;
+
+    &-image {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.copyright {
+  &-outer {
+    background-color: variables.$light-blue;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: variables.$light-blue;
+    padding: variables.$spacing-md variables.$spacing-sm;
+    max-width: 1150px;
+    min-height: variables.$spacing-lg;
+    margin: 0 auto;
+
+    @media (min-width: variables.$breakpoint-sm-md) {
+      padding: variables.$spacing-sm-md variables.$spacing-md;
+    }
+  }
+
+  &-text {
+    display: flex;
+    font-family: variables.$primary-font;
+    color: variables.$white;
+    font-size: variables.$fontsize-sm;
+
+    &-secondary {
+      font-family: variables.$primary-font;
+      font-size: variables.$fontsize-sm;
+      color: rgba(255, 255, 255, 0.8);
+      padding-left: 12px;
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: variables.$spacing-xs;
+      flex-wrap: wrap;
+
+      @media (min-width: variables.$breakpoint-sm-md) {
+        flex-direction: row;
+      }
+    }
+  }
+
+  &-symbol {
+    font-size: 8px;
+    margin-right: variables.$spacing-xs;
+    margin-top: 2.5px;
+  }
+
+  &-logo {
+    height: variables.$spacing-md;
+    width: variables.$spacing-md;
+  }
+}

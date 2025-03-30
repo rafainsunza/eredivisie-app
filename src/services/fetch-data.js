@@ -9,7 +9,7 @@ const apiClient = axios.create({
     },
 });
 
-export const getStandings = async () => {
+export const getFootballData = async () => {
     try {
         const response = await apiClient.get('/competitions/DED/standings');
         return response.data;
@@ -18,4 +18,8 @@ export const getStandings = async () => {
         throw error;
     }
 }
+
+
+
+
 

@@ -24,5 +24,9 @@
       "relegation_playoffs": "Keuken Kampioen Play-Offs",
       "relegation": "Keuken Kampioen Divisie (relegated)"
     }
+  },
+  "navbar_bottom": {
+    "label_text": "Follow our clubs",
+    "copyright_text": "All rights reserverd"
   }
 }
