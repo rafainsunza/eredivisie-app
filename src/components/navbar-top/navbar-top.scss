@@ -48,6 +48,7 @@
 
   &-items {
     position: fixed;
+    z-index: 9999;
     right: 0;
     top: 70px;
     height: 0;

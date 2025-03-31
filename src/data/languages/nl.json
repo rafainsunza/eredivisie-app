@@ -11,6 +11,14 @@
     "clubs": "clubs",
     "topscorers": "topscorers"
   },
+  "banner_bottom": {
+    "title": "competitie",
+    "description": "Op zoek naar meer informatie over de Eredivisie? Bekijk dan de andere competitiepagina's hieronder.",
+    "standings": "stand",
+    "schedule": "programma & uitslagen",
+    "clubs": "clubs",
+    "topscorers": "topscorers"
+  },
   "standings": {
     "winlose_ratio": "W | V | G",
     "scored_conceded": "DV-DT",

@@ -11,6 +11,14 @@
     "clubs": "clubs",
     "topscorers": "top scorers"
   },
+  "banner_bottom": {
+    "title": "competition",
+    "description": "Would you like to see more information about the Eredivisie? Check out the pages below.",
+    "standings": "table",
+    "schedule": " fixtures & results",
+    "clubs": "clubs",
+    "topscorers": "top scorers"
+  },
   "standings": {
     "winlose_ratio": "W | L | D",
     "scored_conceded": "GS-GC",

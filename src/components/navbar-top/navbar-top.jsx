@@ -28,7 +28,7 @@ const NavbarTop = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 768) {
         setIsOpen(false);
       }
     };
@@ -39,6 +39,28 @@ const NavbarTop = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleOutsideNavClick = (e) => {
+    const toggleButton = document.querySelector(".toggle-menu-button");
+    const navbar = document.querySelector(".nav-items");
+    if (
+      navbar &&
+      !navbar.contains(e.target) &&
+      toggleButton &&
+      !toggleButton.contains(e.target)
+    ) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("click", handleOutsideNavClick);
+    }
+    return () => {
+      document.removeEventListener("click", handleOutsideNavClick);
+    };
+  }, [isOpen]);
 
   return (
     <div className="nav-wrapper">

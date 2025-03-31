@@ -3,8 +3,7 @@ import "./standings.scss";
 import { LanguageContext } from "../../context/language-context";
 import { getFootballData } from "../../services/fetch-data";
 import BannerTop from "../banner-top/banner-top";
-import BannerBottom from "../navbar-bottom/navbar-bottom";
-import NavbarBottom from "../navbar-bottom/navbar-bottom";
+import BannerBottom from "../banner-bottom/banner-bottom";
 
 const Standings = () => {
   const { translations } = useContext(LanguageContext);
@@ -52,19 +51,18 @@ const Standings = () => {
     // wait for translations before rendering
     if (translations?.standings) {
       setTexts({
-        winlose_ratio: translations?.standings?.["winlose_ratio"],
-        scored_conceded: translations?.standings?.["scored_conceded"],
-        goal_difference: translations?.standings?.["goal_difference"],
-        title: translations?.standings?.legend?.["title"],
-        champions_league: translations?.standings?.legend?.["champions_league"],
+        winlose_ratio: translations?.standings?.winlose_ratio,
+        scored_conceded: translations?.standings?.scored_conceded,
+        goal_difference: translations?.standings?.goal_difference,
+        title: translations?.standings?.legend?.title,
+        champions_league: translations?.standings?.legend?.champions_league,
         champions_league_qualifying:
-          translations?.standings?.legend?.["champions_league_qualifying"],
-        europa_league: translations?.standings?.legend?.["europa_league"],
-        conference_league:
-          translations?.standings?.legend?.["conference_league"],
+          translations?.standings?.legend?.champions_league_qualifying,
+        europa_league: translations?.standings?.legend?.europa_league,
+        conference_league: translations?.standings?.legend?.conference_league,
         relegation_playoffs:
-          translations?.standings?.legend?.["relegation_playoffs"],
-        relegation: translations?.standings?.legend?.["relegation"],
+          translations?.standings?.legend?.relegation_playoffs,
+        relegation: translations?.standings?.legend?.relegation,
       });
     }
   }, [translations]);
@@ -277,6 +275,8 @@ const Standings = () => {
           </ul>
         </div>
       </div>
+
+      <BannerBottom />
     </>
   );
 };
