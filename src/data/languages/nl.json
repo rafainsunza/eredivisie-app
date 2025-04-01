@@ -9,7 +9,9 @@
     "standings": "stand",
     "schedule": "speelronde",
     "clubs": "clubs",
-    "topscorers": "topscorers"
+    "topscorers": "topscorers",
+    "previous": "vorige",
+    "next": "volgende"
   },
   "banner_bottom": {
     "title": "competitie",

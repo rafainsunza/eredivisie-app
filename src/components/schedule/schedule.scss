@@ -2,11 +2,13 @@
 
 .schedule {
   &-outer {
-    background-color: variables.$blue;
+    background-color: #1e0080;
+    border-bottom: 1px solid rgb(34, 0, 144);
+    border-top: 1px solid rgb(34, 0, 144);
   }
 
   &-wrapper {
-    background-color: variables.$blue;
+    background-color: #1e0080;
     max-width: 1150px;
     margin: 0 auto;
     padding: 65px variables.$spacing-sm;
@@ -92,7 +94,7 @@
       margin-top: variables.$spacing-sm;
       font-size: 8px;
       letter-spacing: 1px;
-      color: variables.$blue;
+      color: #1e0080;
     }
   }
 
@@ -100,6 +102,6 @@
     margin-bottom: variables.$spacing-sm;
     font-size: 28px;
     letter-spacing: 1px;
-    color: variables.$blue;
+    color: #1e0080;
   }
 }

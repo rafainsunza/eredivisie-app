@@ -9,7 +9,9 @@
     "standings": "table",
     "schedule": "matchday",
     "clubs": "clubs",
-    "topscorers": "top scorers"
+    "topscorers": "top scorers",
+    "previous": "previous",
+    "next": "next"
   },
   "banner_bottom": {
     "title": "competition",

@@ -4,7 +4,7 @@
   &-outer {
     background-color: variables.$blue;
     background-image: url("assets/images/eredivisie-brand-stamp.png");
-    background-size: 525px;
+    background-size: 525px 100%;
     background-repeat: no-repeat;
     background-position: right;
 
@@ -13,30 +13,98 @@
     }
 
     @media (min-width: variables.$breakpoint-md-lg) {
-      background-size: 1000px;
+      background-size: 1200px;
     }
   }
 
   &-wrapper {
-    display: flex;
-    align-items: flex-end;
-    height: 270px;
+    display: grid;
+    column-gap: variables.$spacing-md;
     max-width: 1150px;
     margin: 0 auto;
-    padding: variables.$spacing-lg variables.$spacing-sm;
+    padding: 60px variables.$spacing-sm;
 
     @media (min-width: variables.$breakpoint-sm-md) {
-      padding: variables.$spacing-lg variables.$spacing-md;
+      padding: 60px variables.$spacing-md;
+    }
+
+    @media (min-width: variables.$breakpoint-md-lg) {
+      grid-template-columns: 3fr 1fr;
     }
   }
 
   &-title {
+    display: flex;
+    flex-wrap: wrap;
     font-family: variables.$secondary-font;
     font-size: variables.$fontsize-lg;
     color: variables.$white;
+    letter-spacing: 2px;
+    line-height: 60px;
 
     @media (min-width: variables.$breakpoint-sm-md) {
       font-size: variables.$fontsize-xl;
+    }
+  }
+
+  &-titles {
+    max-width: max-content;
+
+    @media (min-width: variables.$breakpoint-md-lg) {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+  }
+
+  &-secondary-title {
+    margin-top: variables.$spacing-sm-md;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: variables.$secondary-font;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: variables.$spacing-sm;
+    width: 300px;
+    margin-top: variables.$spacing-md;
+    height: 55px;
+
+    @media (min-width: variables.$breakpoint-md-lg) {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+
+    &-previous,
+    &-next {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: variables.$spacing-sm-md variables.$spacing-md;
+      border: none;
+      background-color: variables.$white;
+      color: variables.$balanced-blue;
+      font-size: 10px;
+      letter-spacing: 1px;
+      font-family: variables.$secondary-font;
+      transition: background-color 0.15s ease;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(230, 230, 230);
+      }
+
+      & i {
+        font-size: variables.$fontsize-md;
+      }
+
+      & .fa-caret-right {
+        margin-left: 12px;
+      }
+
+      & .fa-caret-left {
+        margin-right: 8px;
+      }
     }
   }
 }
