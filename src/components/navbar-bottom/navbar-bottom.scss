@@ -6,46 +6,42 @@
   }
 
   &-wrapper {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: variables.$spacing-sm-md;
     padding: 20px variables.$spacing-sm;
-    max-width: 1141px;
+    max-width: 1150px;
     margin: 0 auto;
     background-color: variables.$blue;
 
     @media (min-width: variables.$breakpoint-sm-md) {
-      padding: 20px;
+      padding: variables.$spacing-sm-md variables.$spacing-md;
     }
 
-    @media (min-width: 1081px) {
-      justify-content: space-between;
+    @media (min-width: variables.$breakpoint-xl) {
+      grid-template-columns: auto 1fr;
+      column-gap: variables.$spacing-lg;
+      align-items: center;
     }
   }
 
   &-label {
-    display: flex;
-    align-items: center;
-    text-align: center;
+    justify-self: center;
     font-family: variables.$primary-font;
     font-size: variables.$fontsize-sm-md;
     color: rgba(255, 255, 255, 0.8);
   }
 
   &-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 25px);
+    justify-content: space-between;
     gap: variables.$spacing-md;
     padding: 7.5px 0;
   }
 
   &-link {
     display: flex;
-    width: variables.$spacing-md;
-    height: variables.$spacing-md;
-
     &-image {
       height: 100%;
       width: 100%;
