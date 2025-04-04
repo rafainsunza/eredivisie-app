@@ -8,6 +8,8 @@ import BannerBottom from "../banner-bottom/banner-bottom";
 const Schedule = () => {
   const { translations } = useContext(LanguageContext);
   const [titleText, setTitleText] = useState("");
+  const [matchday, setMatchday] = useState(null);
+  // const [matchData, setMatchData] = useState({});
 
   useEffect(() => {
     // wait for translations before rendering
@@ -16,6 +18,39 @@ const Schedule = () => {
     }
   }, [translations]);
 
+  const updateMatchday = (newMatchday) => {
+    setMatchday(newMatchday);
+  };
+
+  // useEffect(() => {
+  //   if (matchday !== null) {
+  //     const fetchMatches = async () => {
+  //       try {
+  //         const data = await getMatchDataByMatchday(matchday);
+  //         setMatchData(data);
+
+  //         console.log(data[0].utcDate);
+  //       } catch (error) {
+  //         console.log("Failed to fetch data", error);
+  //       }
+  //     };
+  //     fetchMatches();
+  //   }
+  // }, [matchday]);
+
+  // useEffect(() => {
+  //   const fetchCurrentMatchday = async () => {
+  //     try {
+  //       const data = await getCurrentMatchday();
+  //       setMatchday(data);
+  //     } catch (error) {
+  //       console.log("Failed to fetch data", error);
+  //     }
+  //   };
+
+  //   fetchCurrentMatchday();
+  // }, []);
+
   return (
     <>
       <BannerTop
@@ -23,6 +58,7 @@ const Schedule = () => {
         hasButtons={true}
         hasSecondaryTitle={true}
         hasTitleSpan={true}
+        updateMatchday={updateMatchday}
       />
 
       <div className="schedule-outer">

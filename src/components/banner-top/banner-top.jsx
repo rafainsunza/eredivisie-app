@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./banner-top.scss";
 import { LanguageContext } from "../../context/language-context";
+import { getFootballData } from "../../services/fetch-data";
 
 const BannerTop = ({
   titleKey,
   hasButtons,
   hasTitleSpan,
   hasSecondaryTitle,
+  updateMatchday,
 }) => {
   const { translations } = useContext(LanguageContext);
   const [titleText, setTitleText] = useState("");
@@ -14,6 +16,91 @@ const BannerTop = ({
     previous: "",
     next: "",
   });
+  const [secondaryTitleText, setSecondaryTitleText] = useState("");
+  const [matchday, setMatchday] = useState(null);
+  const [maxMatchday, setMaxMatchday] = useState(0);
+  const [matchdayData, setMatchdayData] = useState({
+    dates: [],
+  });
+
+  // useEffect(() => {
+  //   const fetchMaxMatchdays = async () => {
+  //     try {
+  //       const maxMatchdayNumber = await getMaxMatchdays();
+  //       setMaxMatchday(maxMatchdayNumber);
+  //     } catch (error) {
+  //       console.log("There was an error fetching max matchdays", error);
+  //     }
+  //   };
+
+  //   fetchMaxMatchdays();
+  // }, []);
+
+  // useEffect(() => {
+  //   const fetchMatchday = async () => {
+  //     try {
+  //       const matchdayNumber = await getCurrentMatchday();
+  //       setMatchday(matchdayNumber);
+
+  //       if (updateMatchday) {
+  //         updateMatchday(matchdayNumber);
+  //       }
+  //     } catch (error) {
+  //       console.log("There was an error fetching the matchday", error);
+  //     }
+  //   };
+
+  //   fetchMatchday();
+  // }, [updateMatchday]);
+
+  // useEffect(() => {
+  //   const fetchMatchdayData = async () => {
+  //     if (!matchday) return;
+
+  //     try {
+  //       const data = await getMatchDataByMatchday(matchday);
+  //       const matchDates = data.map((dataItem) => dataItem.utcDate);
+  //       setMatchdayData({ dates: matchDates });
+  //     } catch (error) {
+  //       console.log("Failed to get matchday data", error);
+  //     }
+  //   };
+
+  //   fetchMatchdayData();
+  // }, [matchday]);
+
+  // useEffect(() => {
+  //   const sortedDates = matchdayData.dates.sort(
+  //     (a, b) => new Date(a) - new Date(b)
+  //   );
+
+  //   const earliestDate = new Date(sortedDates[0]);
+  //   const latestDate = new Date(sortedDates[sortedDates.length - 1]);
+
+  //   const earliestDay = earliestDate.getUTCDate();
+  //   const latestDay = latestDate.getUTCDate();
+
+  //   const earliestMonth = earliestDate.getUTCMonth();
+  //   const latestMonth = latestDate.getUTCMonth();
+
+  //   const earliestYear = earliestDate.getUTCFullYear();
+  //   const latestYear = latestDate.getUTCFullYear();
+
+  // wait for translations before rendering
+  //   if (translations?.banner_top) {
+  //     let formattedSecondaryTitle = "";
+
+  //     if (earliestMonth === latestMonth && earliestYear === latestYear) {
+  //       formattedSecondaryTitle = `${earliestDay} ${translations?.banner_top?.until} ${latestDay} ${translations?.banner_top?.month_names[earliestMonth]} ${earliestYear}`;
+  //     } else if (earliestYear !== latestYear) {
+  //       formattedSecondaryTitle = `${earliestDay} ${earliestMonth} ${earliestYear} ${translations?.banner_top?.until} ${latestDay} ${latestMonth} ${latestYear}`;
+  //     } else {
+  //       formattedSecondaryTitle = `${earliestDay} ${earliestMonth} ${translations?.banner_top?.until} ${latestDay} ${latestMonth} ${earliestYear}`;
+  //     }
+
+  //     setSecondaryTitleText(formattedSecondaryTitle);
+  //   }
+  // }, [matchdayData, translations]);
 
   useEffect(() => {
     // wait for translations before rendering
@@ -29,29 +116,53 @@ const BannerTop = ({
     }
   }, [translations, titleKey]);
 
+  const goToPreviousMatchday = () => {
+    if (matchday > 1) {
+      const newMatchday = matchday - 1;
+      setMatchday(newMatchday);
+      updateMatchday(newMatchday);
+    }
+  };
+
+  const goToNextMatchday = () => {
+    if (matchday < maxMatchday) {
+      const newMatchday = matchday + 1;
+      setMatchday(newMatchday);
+      updateMatchday(newMatchday);
+    }
+  };
+
   return (
     <div className="banner-top-outer">
       <div className="banner-top-wrapper">
         <div className="banner-top-titles">
           <h1 className="banner-top-title">
             {titleText.toUpperCase()}&nbsp;
-            {hasTitleSpan && <span className="banner-top-title-span"> 25</span>}
+            {hasTitleSpan && (
+              <span className="banner-top-title-span"> {matchday}</span>
+            )}
           </h1>
 
           {hasSecondaryTitle && (
             <h2 className="banner-top-secondary-title">
-              20 DECEMBER T/M 28 DECEMBER 2025
+              {secondaryTitleText.toUpperCase()}
             </h2>
           )}
         </div>
 
         {hasButtons && (
           <div className="banner-top-buttons">
-            <button className="banner-top-buttons-previous">
+            <button
+              className="banner-top-buttons-previous"
+              onClick={goToPreviousMatchday}
+            >
               <i className="fa-solid fa-caret-left"></i>{" "}
               {buttonText.previous.toUpperCase()}
             </button>
-            <button className="banner-top-buttons-next">
+            <button
+              className="banner-top-buttons-next"
+              onClick={goToNextMatchday}
+            >
               {buttonText.next.toUpperCase()}
               <i className="fa-solid fa-caret-right"></i>{" "}
             </button>

@@ -7,8 +7,8 @@ import { LanguageProvider } from "./context/language-context";
 
 import NavbarTop from "./components/navbar-top/navbar-top";
 import NavbarBottom from "./components/navbar-bottom/navbar-bottom";
-import Standings from "./components/standings/standings";
 import Schedule from "./components/schedule/schedule";
+import Standings from "./components/standings/standings";
 
 function App() {
   return (
@@ -17,11 +17,10 @@ function App() {
         <NavbarTop />
       </header>
       <main>
-        <Schedule />
+        {/* <Schedule /> */}
+        <Standings />
       </main>
-      <footer>
-        <NavbarBottom />
-      </footer>
+      <footer>{/* <NavbarBottom /> */}</footer>
     </>
   );
 }

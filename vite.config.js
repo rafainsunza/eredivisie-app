@@ -9,7 +9,7 @@ export default defineConfig({
       '/v4': {
         target: 'https://api.football-data.org',
         changeOrigin: true,
-        secure: true
+        secure: true,
         // rewrite: (path) => path.replace(/^\/v4/, '')
       }
     }

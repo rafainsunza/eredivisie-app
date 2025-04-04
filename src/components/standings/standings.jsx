@@ -4,6 +4,7 @@ import { LanguageContext } from "../../context/language-context";
 import { getFootballData } from "../../services/fetch-data";
 import BannerTop from "../banner-top/banner-top";
 import BannerBottom from "../banner-bottom/banner-bottom";
+import axios from "axios";
 
 const Standings = () => {
   const { translations } = useContext(LanguageContext);
@@ -34,18 +35,20 @@ const Standings = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const fetchStandings = async () => {
-      try {
-        const data = await getFootballData();
-        setStandings(data.standings[0]?.table);
-      } catch (error) {
-        console.log("Failed to fetch standings:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchStandings = async () => {
+  //     try {
+  //       const response = await axios.get("/api/football");
 
-    fetchStandings();
-  }, []);
+  //       console.log(response);
+  //       setStandings(response.data.standings[0]?.table);
+  //     } catch (error) {
+  //       console.log("Failed to fetch standings:", error);
+  //     }
+  //   };
+
+  //   fetchStandings();
+  // }, []);
 
   useEffect(() => {
     // wait for translations before rendering
