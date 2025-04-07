@@ -17,10 +17,12 @@ function App() {
         <NavbarTop />
       </header>
       <main>
-        {/* <Schedule /> */}
-        <Standings />
+        <Schedule />
+        {/* <Standings /> */}
       </main>
-      <footer>{/* <NavbarBottom /> */}</footer>
+      <footer>
+        <NavbarBottom />
+      </footer>
     </>
   );
 }

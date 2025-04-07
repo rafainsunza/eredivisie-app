@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-export const getFootballData = async () => {
+export const getFootballData = async (matchday) => {
     try {
         const response = await axios.get('http://localhost:5000/api/football');
         const data = response.data;
         const standings = data.standings;
         const teams = data.teams;
-        const matchDays = data.matchDays;
+        const matches = data.matches.filter((match) => match.matchday === matchday);
         const currentMatchday = data.currentMatchday;
+        const maxMatchdays = Math.max(...data.matches.map((match) => match.matchday));
 
-
-        return { standings, teams, matchDays, currentMatchday }
+        return { standings, teams, matches, currentMatchday, maxMatchdays }
 
     } catch (error) {
         console.log('Error fetching football data:', error);
@@ -18,4 +18,3 @@ export const getFootballData = async () => {
     }
 }
 
-getFootballData();

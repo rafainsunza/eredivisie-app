@@ -35,20 +35,18 @@ const Standings = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const fetchStandings = async () => {
-  //     try {
-  //       const response = await axios.get("/api/football");
+  useEffect(() => {
+    const getStandingsData = async () => {
+      try {
+        const standingsData = (await getFootballData()).standings;
+        setStandings(standingsData);
+      } catch (error) {
+        console.log("Failed to get standings", error);
+      }
+    };
 
-  //       console.log(response);
-  //       setStandings(response.data.standings[0]?.table);
-  //     } catch (error) {
-  //       console.log("Failed to fetch standings:", error);
-  //     }
-  //   };
-
-  //   fetchStandings();
-  // }, []);
+    getStandingsData();
+  }, []);
 
   useEffect(() => {
     // wait for translations before rendering

@@ -22,7 +22,6 @@ app.get('/api/football', async (req, res) => {
         return res.json(cachedData);
     }
 
-
     try {
         const teamsResponse = await axios.get(`${API_URL}/competitions/DED/teams`, {
             headers: {
@@ -50,15 +49,14 @@ app.get('/api/football', async (req, res) => {
         });
 
         const standings = standingsResponse.data.standings[0].table || [];
-        const teams = teamsResponse.data || {};
-        const matchDays = matchesResponse.data.matches || [];
+        const teams = teamsResponse.data.teams || [];
+        const matches = matchesResponse.data.matches || [];
         const currentMatchday = competitonsResponse.data.currentSeason.currentMatchday || null;
-
 
         cachedData = {
             standings,
             teams,
-            matchDays,
+            matches,
             currentMatchday
         }
         lastFetchTime = currentTime;
@@ -74,5 +72,6 @@ const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => {
     console.log('Backend server running on port', PORT);
+
 });
 

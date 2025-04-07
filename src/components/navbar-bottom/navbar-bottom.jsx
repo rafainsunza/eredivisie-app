@@ -38,25 +38,25 @@ const NavbarBottom = () => {
     }
   }, [translations]);
 
-  // useEffect(() => {
-  //   const fetchTeams = async () => {
-  //     try {
-  //       const data = await getTeamsData();
-  //       setTeamData(data.teams.map((team) => team));
-  //     } catch (error) {
-  //       console.log("Failed to fetch crests:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const getTeamsData = async () => {
+      try {
+        const teamsData = (await getFootballData()).teams;
+        setTeamData(teamsData.map((team) => team));
+      } catch (error) {
+        console.log("Failed to fetch crests:", error);
+      }
+    };
 
-  //   fetchTeams();
-  // }, []);
+    getTeamsData();
+  }, []);
 
   // Sort teams alphabetically
-  // const sortedTeamData = teamData?.sort((a, b) => {
-  //   if (a.name < b.name) return -1;
-  //   if (a.name > b.name) return 1;
-  //   return 0;
-  // });
+  const sortedTeamData = teamData?.sort((a, b) => {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  });
 
   return (
     <>

@@ -20,6 +20,7 @@
   &-wrapper {
     display: grid;
     column-gap: variables.$spacing-md;
+    min-height: 275px;
     max-width: 1150px;
     margin: 0 auto;
     padding: 60px variables.$spacing-sm;

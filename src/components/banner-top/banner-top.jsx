@@ -23,84 +23,86 @@ const BannerTop = ({
     dates: [],
   });
 
-  // useEffect(() => {
-  //   const fetchMaxMatchdays = async () => {
-  //     try {
-  //       const maxMatchdayNumber = await getMaxMatchdays();
-  //       setMaxMatchday(maxMatchdayNumber);
-  //     } catch (error) {
-  //       console.log("There was an error fetching max matchdays", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const getMaxMatchday = async () => {
+      try {
+        const maxMatchdayNumber = (await getFootballData()).maxMatchdays;
+        setMaxMatchday(maxMatchdayNumber);
+      } catch (error) {
+        console.log("Failed to get number of max matchdays", error);
+      }
+    };
 
-  //   fetchMaxMatchdays();
-  // }, []);
+    getMaxMatchday();
+  }, []);
 
-  // useEffect(() => {
-  //   const fetchMatchday = async () => {
-  //     try {
-  //       const matchdayNumber = await getCurrentMatchday();
-  //       setMatchday(matchdayNumber);
+  useEffect(() => {
+    const getCurrentMatchday = async () => {
+      try {
+        const currentMatchday = (await getFootballData()).currentMatchday;
+        setMatchday(currentMatchday);
+        updateMatchday(currentMatchday);
+      } catch (error) {
+        console.log("Failed to get current matchday:", error);
+      }
+    };
 
-  //       if (updateMatchday) {
-  //         updateMatchday(matchdayNumber);
-  //       }
-  //     } catch (error) {
-  //       console.log("There was an error fetching the matchday", error);
-  //     }
-  //   };
+    getCurrentMatchday();
+  }, []);
 
-  //   fetchMatchday();
-  // }, [updateMatchday]);
+  useEffect(() => {
+    const getMatchdayData = async () => {
+      if (!matchday) return;
 
-  // useEffect(() => {
-  //   const fetchMatchdayData = async () => {
-  //     if (!matchday) return;
+      try {
+        const returnedMatchdayData = await getFootballData(matchday);
+        const matchDates = returnedMatchdayData.matches.map(
+          (match) => match.utcDate
+        );
 
-  //     try {
-  //       const data = await getMatchDataByMatchday(matchday);
-  //       const matchDates = data.map((dataItem) => dataItem.utcDate);
-  //       setMatchdayData({ dates: matchDates });
-  //     } catch (error) {
-  //       console.log("Failed to get matchday data", error);
-  //     }
-  //   };
+        setMatchdayData({ dates: matchDates });
+      } catch (error) {
+        console.log("Failed to get matchday data:", error);
+      }
+    };
 
-  //   fetchMatchdayData();
-  // }, [matchday]);
+    getMatchdayData();
+  }, [matchday]);
 
-  // useEffect(() => {
-  //   const sortedDates = matchdayData.dates.sort(
-  //     (a, b) => new Date(a) - new Date(b)
-  //   );
+  useEffect(() => {
+    const sortedDates = matchdayData.dates.sort(
+      (a, b) => new Date(a) - new Date(b)
+    );
+    const earliestDate = new Date(sortedDates[0]);
+    const latestDate = new Date(sortedDates[sortedDates.length - 1]);
 
-  //   const earliestDate = new Date(sortedDates[0]);
-  //   const latestDate = new Date(sortedDates[sortedDates.length - 1]);
+    const earliestDay = earliestDate.getUTCDate();
+    const latestDay = latestDate.getUTCDate();
 
-  //   const earliestDay = earliestDate.getUTCDate();
-  //   const latestDay = latestDate.getUTCDate();
+    const earliestMonth = earliestDate.getUTCMonth();
+    const latestMonth = latestDate.getUTCMonth();
 
-  //   const earliestMonth = earliestDate.getUTCMonth();
-  //   const latestMonth = latestDate.getUTCMonth();
+    const earliestYear = earliestDate.getUTCFullYear();
+    const latestYear = latestDate.getUTCFullYear();
 
-  //   const earliestYear = earliestDate.getUTCFullYear();
-  //   const latestYear = latestDate.getUTCFullYear();
+    // wait for translations before rendering
+    if (translations?.banner_top) {
+      let formattedSecondaryTitle = "";
 
-  // wait for translations before rendering
-  //   if (translations?.banner_top) {
-  //     let formattedSecondaryTitle = "";
+      if (earliestMonth === latestMonth && earliestYear === latestYear) {
+        // DAY-DAY-MONTH-YEAR
+        formattedSecondaryTitle = `${earliestDay} ${translations?.banner_top?.until} ${latestDay} ${translations?.banner_top?.month_names[earliestMonth]} ${earliestYear}`;
+      } else if (earliestYear !== latestYear) {
+        // DAY-MONTH-YEAR DAY-MONTH-YEAR
+        formattedSecondaryTitle = `${earliestDay} ${translations?.banner_top?.month_names[earliestMonth]} ${earliestYear} ${translations?.banner_top?.until} ${latestDay} ${translations?.banner_top?.month_names[latestMonth]} ${latestYear}`;
+      } else {
+        // DAY-MONTH DAY-MONTH-YEAR
+        formattedSecondaryTitle = `${earliestDay} ${translations?.banner_top?.month_names[earliestMonth]} ${translations?.banner_top?.until} ${latestDay} ${translations?.banner_top?.month_names[latestMonth]} ${earliestYear}`;
+      }
 
-  //     if (earliestMonth === latestMonth && earliestYear === latestYear) {
-  //       formattedSecondaryTitle = `${earliestDay} ${translations?.banner_top?.until} ${latestDay} ${translations?.banner_top?.month_names[earliestMonth]} ${earliestYear}`;
-  //     } else if (earliestYear !== latestYear) {
-  //       formattedSecondaryTitle = `${earliestDay} ${earliestMonth} ${earliestYear} ${translations?.banner_top?.until} ${latestDay} ${latestMonth} ${latestYear}`;
-  //     } else {
-  //       formattedSecondaryTitle = `${earliestDay} ${earliestMonth} ${translations?.banner_top?.until} ${latestDay} ${latestMonth} ${earliestYear}`;
-  //     }
-
-  //     setSecondaryTitleText(formattedSecondaryTitle);
-  //   }
-  // }, [matchdayData, translations]);
+      setSecondaryTitleText(formattedSecondaryTitle);
+    }
+  }, [matchdayData, translations]);
 
   useEffect(() => {
     // wait for translations before rendering
