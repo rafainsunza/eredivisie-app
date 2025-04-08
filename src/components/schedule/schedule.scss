@@ -70,8 +70,8 @@
   }
 
   &-match {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
     align-items: center;
     column-gap: variables.$spacing-sm;
     width: 100%;
@@ -91,9 +91,11 @@
     }
 
     &-name {
+      text-align: center;
       margin-top: variables.$spacing-sm;
       font-size: 8px;
       letter-spacing: 1px;
+      line-height: 15px;
       color: #1e0080;
     }
   }
@@ -102,6 +104,7 @@
     margin-bottom: variables.$spacing-sm;
     font-size: 28px;
     letter-spacing: 1px;
+    white-space: nowrap;
     color: #1e0080;
   }
 }

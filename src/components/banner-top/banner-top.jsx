@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import "./banner-top.scss";
 import { LanguageContext } from "../../context/language-context";
 import { getFootballData } from "../../services/fetch-data";
@@ -8,7 +8,7 @@ const BannerTop = ({
   hasButtons,
   hasTitleSpan,
   hasSecondaryTitle,
-  updateMatchday,
+  updateMatchData,
 }) => {
   const { translations } = useContext(LanguageContext);
   const [titleText, setTitleText] = useState("");
@@ -18,10 +18,13 @@ const BannerTop = ({
   });
   const [secondaryTitleText, setSecondaryTitleText] = useState("");
   const [matchday, setMatchday] = useState(null);
-  const [maxMatchday, setMaxMatchday] = useState(0);
+  const [maxMatchday, setMaxMatchday] = useState(null);
   const [matchdayData, setMatchdayData] = useState({
     dates: [],
   });
+
+  const previousButtonRef = useRef(null);
+  const nextButtonRef = useRef(null);
 
   useEffect(() => {
     const getMaxMatchday = async () => {
@@ -41,7 +44,6 @@ const BannerTop = ({
       try {
         const currentMatchday = (await getFootballData()).currentMatchday;
         setMatchday(currentMatchday);
-        updateMatchday(currentMatchday);
       } catch (error) {
         console.log("Failed to get current matchday:", error);
       }
@@ -51,21 +53,39 @@ const BannerTop = ({
   }, []);
 
   useEffect(() => {
-    const getMatchdayData = async () => {
-      if (!matchday) return;
+    if (!matchday) return;
 
+    const getMatchdayData = async () => {
       try {
-        const returnedMatchdayData = await getFootballData(matchday);
-        const matchDates = returnedMatchdayData.matches.map(
+        const AllMatchdayData = await getFootballData(matchday);
+
+        const matchDates = AllMatchdayData.matches.map(
           (match) => match.utcDate
         );
 
+        // share match data with schedule component
+        updateMatchData(AllMatchdayData.matches);
         setMatchdayData({ dates: matchDates });
       } catch (error) {
         console.log("Failed to get matchday data:", error);
       }
     };
 
+    const toggleNavigationButtons = () => {
+      const previousButton = previousButtonRef.current;
+      const nextButton = nextButtonRef.current;
+
+      if (matchday === 1) {
+        previousButton.classList.add("disabled");
+      } else if (matchday === maxMatchday) {
+        nextButton.classList.add("disabled");
+      } else {
+        previousButton.classList.remove("disabled");
+        nextButton.classList.remove("disabled");
+      }
+    };
+
+    toggleNavigationButtons();
     getMatchdayData();
   }, [matchday]);
 
@@ -122,7 +142,6 @@ const BannerTop = ({
     if (matchday > 1) {
       const newMatchday = matchday - 1;
       setMatchday(newMatchday);
-      updateMatchday(newMatchday);
     }
   };
 
@@ -130,7 +149,6 @@ const BannerTop = ({
     if (matchday < maxMatchday) {
       const newMatchday = matchday + 1;
       setMatchday(newMatchday);
-      updateMatchday(newMatchday);
     }
   };
 
@@ -157,11 +175,13 @@ const BannerTop = ({
             <button
               className="banner-top-buttons-previous"
               onClick={goToPreviousMatchday}
+              ref={previousButtonRef}
             >
               <i className="fa-solid fa-caret-left"></i>{" "}
               {buttonText.previous.toUpperCase()}
             </button>
             <button
+              ref={nextButtonRef}
               className="banner-top-buttons-next"
               onClick={goToNextMatchday}
             >

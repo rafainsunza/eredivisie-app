@@ -4,7 +4,6 @@ import { LanguageContext } from "../../context/language-context";
 import { getFootballData } from "../../services/fetch-data";
 import BannerTop from "../banner-top/banner-top";
 import BannerBottom from "../banner-bottom/banner-bottom";
-import axios from "axios";
 
 const Standings = () => {
   const { translations } = useContext(LanguageContext);

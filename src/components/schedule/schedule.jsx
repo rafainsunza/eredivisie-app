@@ -1,55 +1,32 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./schedule.scss";
 import { LanguageContext } from "../../context/language-context";
-import { getFootballData } from "../../services/fetch-data";
 import BannerTop from "../banner-top/banner-top";
 import BannerBottom from "../banner-bottom/banner-bottom";
 
 const Schedule = () => {
   const { translations } = useContext(LanguageContext);
-  const [titleText, setTitleText] = useState("");
-  const [matchday, setMatchday] = useState(null);
-  // const [matchData, setMatchData] = useState({});
+  const [matchData, setMatchData] = useState([]);
 
-  useEffect(() => {
-    // wait for translations before rendering
-    if (translations?.banner_bottom) {
-      setTitleText(translations?.banner_bottom?.title);
-    }
-  }, [translations]);
-
-  const updateMatchday = (newMatchday) => {
-    setMatchday(newMatchday);
+  const updateMatchdata = (newMatchData) => {
+    setMatchData(newMatchData);
   };
 
-  // useEffect(() => {
-  //   if (matchday !== null) {
-  //     const fetchMatches = async () => {
-  //       try {
-  //         const data = await getMatchDataByMatchday(matchday);
-  //         setMatchData(data);
+  useEffect(() => {
+    if (!matchData) return;
+  }, [matchData]);
 
-  //         console.log(data[0].utcDate);
-  //       } catch (error) {
-  //         console.log("Failed to fetch data", error);
-  //       }
-  //     };
-  //     fetchMatches();
-  //   }
-  // }, [matchday]);
+  const formatTeamName = (name) => {
+    const cleanupRules = {
+      "AFC Ajax": "Ajax",
+      "Feyenoord Rotterdam": "Feyenoord",
+      "FC Twente '65": "FC Twente",
+      NEC: "N.E.C Nijmegen",
+      "Willem II Tilburg": "Willem II",
+    };
 
-  // useEffect(() => {
-  //   const fetchCurrentMatchday = async () => {
-  //     try {
-  //       const data = await getCurrentMatchday();
-  //       setMatchday(data);
-  //     } catch (error) {
-  //       console.log("Failed to fetch data", error);
-  //     }
-  //   };
-
-  //   fetchCurrentMatchday();
-  // }, []);
+    return cleanupRules[name] || name;
+  };
 
   return (
     <>
@@ -58,39 +35,85 @@ const Schedule = () => {
         hasButtons={true}
         hasSecondaryTitle={true}
         hasTitleSpan={true}
-        updateMatchday={updateMatchday}
+        updateMatchData={updateMatchdata}
       />
 
       <div className="schedule-outer">
         <div className="schedule-wrapper">
           <ul className="schedule-items">
-            <li className="schedule-item">
-              <a href="" className="schedule-link">
-                <div className="schedule-date">
-                  <div className="schedule-date-triangle"></div>
-                  VR 26 DECEMBER 2025
-                </div>
-                <div className="schedule-match">
-                  <div className="schedule-team">
-                    <img
-                      className="schedule-team-crest"
-                      src="assets/images/eredivisie.svg"
-                      alt=""
-                    />
-                    <div className="schedule-team-name">AJAX</div>
-                  </div>
-                  <div className="schedule-time-result">4 - 0</div>
-                  <div className="schedule-team">
-                    <img
-                      className="schedule-team-crest"
-                      src="assets/images/eredivisie.svg"
-                      alt=""
-                    />
-                    <div className="schedule-team-name">FEYENOORD</div>
-                  </div>
-                </div>
-              </a>
-            </li>
+            {matchData.map((match) => {
+              const matchId = match.id;
+              const matchStatus = match.status;
+
+              const fullDate = new Date(match.utcDate);
+
+              // convert to Netherlands time
+              const options = {
+                timeZone: "Europe/Amsterdam",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              };
+              const formatter = new Intl.DateTimeFormat([], options);
+
+              const time = formatter.format(fullDate);
+              const day = fullDate.getUTCDay();
+              const date = fullDate.getUTCDate();
+              const month = fullDate.getUTCMonth();
+              const year = fullDate.getUTCFullYear();
+
+              const homeTeamCrest = match.homeTeam.crest;
+              const homeTeamName = formatTeamName(match.homeTeam.name);
+              const homeTeamScore = match.score.fullTime.home;
+              const awayTeamCrest = match.awayTeam.crest;
+              const awayTeamName = formatTeamName(match.awayTeam.name);
+              const awayTeamScore = match.score.fullTime.away;
+              const result = `${homeTeamScore} - ${awayTeamScore}`;
+
+              // wait for translations before rendering
+              if (translations?.schedule) {
+                const formattedDate = `${translations?.schedule?.day_names[day]}, ${date} ${translations?.schedule?.month_names[month]} ${year}`;
+
+                return (
+                  <li className="schedule-item" key={matchId}>
+                    <a href="" className="schedule-link">
+                      <div className="schedule-date">
+                        <div className="schedule-date-triangle"></div>
+                        {formattedDate.toUpperCase()}
+                      </div>
+
+                      <div className="schedule-match">
+                        <div className="schedule-team">
+                          <img
+                            src={homeTeamCrest}
+                            alt=""
+                            className="schedule-team-crest"
+                          />
+                          <div className="schedule-team-name">
+                            {homeTeamName.toUpperCase()}
+                          </div>
+                        </div>
+
+                        <div className="schedule-time-result">
+                          {matchStatus === "TIMED" ? time : result}
+                        </div>
+
+                        <div className="schedule-team">
+                          <img
+                            src={awayTeamCrest}
+                            alt=""
+                            className="schedule-team-crest"
+                          />
+                          <div className="schedule-team-name">
+                            {awayTeamName.toUpperCase()}
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                );
+              }
+            })}
           </ul>
         </div>
       </div>
