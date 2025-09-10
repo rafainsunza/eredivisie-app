@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./schedule.scss";
 import { LanguageContext } from "../../context/language-context";
 import BannerTop from "../banner-top/banner-top";
@@ -11,10 +11,6 @@ const Schedule = () => {
   const updateMatchdata = (newMatchData) => {
     setMatchData(newMatchData);
   };
-
-  useEffect(() => {
-    if (!matchData) return;
-  }, [matchData]);
 
   const formatTeamName = (name) => {
     const cleanupRules = {
@@ -73,10 +69,11 @@ const Schedule = () => {
               // wait for translations before rendering
               if (translations?.schedule) {
                 const formattedDate = `${translations?.schedule?.day_names[day]}, ${date} ${translations?.schedule?.month_names[month]} ${year}`;
+                const tbd = translations?.schedule?.tbd;
 
                 return (
                   <li className="schedule-item" key={matchId}>
-                    <a href="" className="schedule-link">
+                    <a href="#" className="schedule-link">
                       <div className="schedule-date">
                         <div className="schedule-date-triangle"></div>
                         {formattedDate.toUpperCase()}
@@ -84,29 +81,17 @@ const Schedule = () => {
 
                       <div className="schedule-match">
                         <div className="schedule-team">
-                          <img
-                            src={homeTeamCrest}
-                            alt=""
-                            className="schedule-team-crest"
-                          />
-                          <div className="schedule-team-name">
-                            {homeTeamName.toUpperCase()}
-                          </div>
+                          <img src={homeTeamCrest} alt={`${homeTeamName} logo`} className="schedule-team-crest" />
+                          <div className="schedule-team-name">{homeTeamName.toUpperCase()}</div>
                         </div>
 
                         <div className="schedule-time-result">
-                          {matchStatus === "TIMED" ? time : result}
+                          {matchStatus === "TIMED" ? time : matchStatus === "SCHEDULED" ? tbd : result}
                         </div>
 
                         <div className="schedule-team">
-                          <img
-                            src={awayTeamCrest}
-                            alt=""
-                            className="schedule-team-crest"
-                          />
-                          <div className="schedule-team-name">
-                            {awayTeamName.toUpperCase()}
-                          </div>
+                          <img src={awayTeamCrest} alt={`${awayTeamName} logo`} className="schedule-team-crest" />
+                          <div className="schedule-team-name">{awayTeamName.toUpperCase()}</div>
                         </div>
                       </div>
                     </a>

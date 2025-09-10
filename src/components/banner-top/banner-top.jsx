@@ -3,13 +3,7 @@ import "./banner-top.scss";
 import { LanguageContext } from "../../context/language-context";
 import { getFootballData } from "../../services/fetch-data";
 
-const BannerTop = ({
-  titleKey,
-  hasButtons,
-  hasTitleSpan,
-  hasSecondaryTitle,
-  updateMatchData,
-}) => {
+const BannerTop = ({ titleKey, hasButtons, hasTitleSpan, hasSecondaryTitle, updateMatchData }) => {
   const { translations } = useContext(LanguageContext);
   const [titleText, setTitleText] = useState("");
   const [buttonText, setButtonText] = useState({
@@ -59,9 +53,7 @@ const BannerTop = ({
       try {
         const AllMatchdayData = await getFootballData(matchday);
 
-        const matchDates = AllMatchdayData.matches.map(
-          (match) => match.utcDate
-        );
+        const matchDates = AllMatchdayData.matches.map((match) => match.utcDate);
 
         // share match data with schedule component
         updateMatchData(AllMatchdayData.matches);
@@ -85,14 +77,12 @@ const BannerTop = ({
       }
     };
 
-    toggleNavigationButtons();
+    if (hasButtons) toggleNavigationButtons();
     getMatchdayData();
   }, [matchday]);
 
   useEffect(() => {
-    const sortedDates = matchdayData.dates.sort(
-      (a, b) => new Date(a) - new Date(b)
-    );
+    const sortedDates = matchdayData.dates.sort((a, b) => new Date(a) - new Date(b));
     const earliestDate = new Date(sortedDates[0]);
     const latestDate = new Date(sortedDates[sortedDates.length - 1]);
 
@@ -109,7 +99,10 @@ const BannerTop = ({
     if (translations?.banner_top) {
       let formattedSecondaryTitle = "";
 
-      if (earliestMonth === latestMonth && earliestYear === latestYear) {
+      if (earliestDay === latestDay && earliestMonth === latestMonth && earliestYear === latestYear) {
+        // DAY-MONTH-YEAR
+        formattedSecondaryTitle = `${earliestDay} ${translations?.banner_top?.month_names[earliestMonth]} ${earliestYear}`;
+      } else if (earliestMonth === latestMonth && earliestYear === latestYear) {
         // DAY-DAY-MONTH-YEAR
         formattedSecondaryTitle = `${earliestDay} ${translations?.banner_top?.until} ${latestDay} ${translations?.banner_top?.month_names[earliestMonth]} ${earliestYear}`;
       } else if (earliestYear !== latestYear) {
@@ -158,33 +151,18 @@ const BannerTop = ({
         <div className="banner-top-titles">
           <h1 className="banner-top-title">
             {titleText.toUpperCase()}&nbsp;
-            {hasTitleSpan && (
-              <span className="banner-top-title-span"> {matchday}</span>
-            )}
+            {hasTitleSpan && <span className="banner-top-title-span"> {matchday}</span>}
           </h1>
 
-          {hasSecondaryTitle && (
-            <h2 className="banner-top-secondary-title">
-              {secondaryTitleText.toUpperCase()}
-            </h2>
-          )}
+          {hasSecondaryTitle && <h2 className="banner-top-secondary-title">{secondaryTitleText.toUpperCase()}</h2>}
         </div>
 
         {hasButtons && (
           <div className="banner-top-buttons">
-            <button
-              className="banner-top-buttons-previous"
-              onClick={goToPreviousMatchday}
-              ref={previousButtonRef}
-            >
-              <i className="fa-solid fa-caret-left"></i>{" "}
-              {buttonText.previous.toUpperCase()}
+            <button className="banner-top-buttons-previous" onClick={goToPreviousMatchday} ref={previousButtonRef}>
+              <i className="fa-solid fa-caret-left"></i> {buttonText.previous.toUpperCase()}
             </button>
-            <button
-              ref={nextButtonRef}
-              className="banner-top-buttons-next"
-              onClick={goToNextMatchday}
-            >
+            <button ref={nextButtonRef} className="banner-top-buttons-next" onClick={goToNextMatchday}>
               {buttonText.next.toUpperCase()}
               <i className="fa-solid fa-caret-right"></i>{" "}
             </button>

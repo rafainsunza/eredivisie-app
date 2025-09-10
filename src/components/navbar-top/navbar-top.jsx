@@ -3,7 +3,7 @@ import { LanguageContext } from "../../context/language-context";
 import LanguageSelect from "../language-select/language-select";
 import "./navbar-top.scss";
 
-const NavbarTop = () => {
+const NavbarTop = ({ setActivePage }) => {
   const { translations } = useContext(LanguageContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -43,12 +43,7 @@ const NavbarTop = () => {
   const handleOutsideNavClick = (e) => {
     const toggleButton = document.querySelector(".toggle-menu-button");
     const navbar = document.querySelector(".nav-items");
-    if (
-      navbar &&
-      !navbar.contains(e.target) &&
-      toggleButton &&
-      !toggleButton.contains(e.target)
-    ) {
+    if (navbar && !navbar.contains(e.target) && toggleButton && !toggleButton.contains(e.target)) {
       setIsOpen(false);
     }
   };
@@ -83,11 +78,11 @@ const NavbarTop = () => {
 
         <ul className={`nav-items ${isOpen ? "open" : ""}`}>
           <li className="nav-item">
-            <a href="" className="nav-link standings"></a>
+            <a href="#" className="nav-link standings" onClick={() => setActivePage("standings")}></a>
           </li>
 
           <li className="nav-item">
-            <a href="" className="nav-link schedule"></a>
+            <a href="" className="nav-link schedule" onClick={() => setActivePage("schedule")}></a>
           </li>
 
           <li className="nav-item">

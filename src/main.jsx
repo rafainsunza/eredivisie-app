@@ -1,7 +1,7 @@
 import "./styles/main.scss";
 import "./styles/reset.css";
 
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { LanguageProvider } from "./context/language-context";
 
@@ -11,14 +11,16 @@ import Schedule from "./components/schedule/schedule";
 import Standings from "./components/standings/standings";
 
 function App() {
+  const [activePage, setActivePage] = useState("schedule");
+
   return (
     <>
       <header>
-        <NavbarTop />
+        <NavbarTop setActivePage={setActivePage} />
       </header>
       <main>
-        <Schedule />
-        {/* <Standings /> */}
+        {activePage === "schedule" && <Schedule />}
+        {activePage === "standings" && <Standings />}
       </main>
       <footer>
         <NavbarBottom />

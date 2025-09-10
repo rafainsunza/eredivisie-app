@@ -31,6 +31,7 @@
 
     @media (min-width: variables.$breakpoint-md-lg) {
       grid-template-columns: 3fr 1fr;
+      align-items: end;
     }
   }
 
@@ -52,7 +53,7 @@
     max-width: max-content;
 
     @media (min-width: variables.$breakpoint-md-lg) {
-      grid-area: 1 / 1 / 2 / 2;
+      grid-area: 2 / 1 / 2 / 2;
     }
   }
 
