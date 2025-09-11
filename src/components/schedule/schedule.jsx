@@ -19,6 +19,8 @@ const Schedule = () => {
       "FC Twente '65": "FC Twente",
       NEC: "N.E.C Nijmegen",
       "Willem II Tilburg": "Willem II",
+      "Telstar 1963": "Telstar",
+      "SBV Excelsior": "Excelsior",
     };
 
     return cleanupRules[name] || name;

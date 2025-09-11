@@ -56,12 +56,10 @@ const Standings = () => {
         goal_difference: translations?.standings?.goal_difference,
         title: translations?.standings?.legend?.title,
         champions_league: translations?.standings?.legend?.champions_league,
-        champions_league_qualifying:
-          translations?.standings?.legend?.champions_league_qualifying,
+        champions_league_qualifying: translations?.standings?.legend?.champions_league_qualifying,
         europa_league: translations?.standings?.legend?.europa_league,
         conference_league: translations?.standings?.legend?.conference_league,
-        relegation_playoffs:
-          translations?.standings?.legend?.relegation_playoffs,
+        relegation_playoffs: translations?.standings?.legend?.relegation_playoffs,
         relegation: translations?.standings?.legend?.relegation,
       });
     }
@@ -74,6 +72,8 @@ const Standings = () => {
       "FC Twente '65": "FC Twente",
       NEC: "N.E.C Nijmegen",
       "Willem II Tilburg": "Willem II",
+      "Telstar 1963": "Telstar",
+      "SBV Excelsior": "Excelsior",
     };
 
     return cleanupRules[name] || name;
@@ -81,12 +81,7 @@ const Standings = () => {
 
   return (
     <>
-      <BannerTop
-        titleKey={"standings"}
-        hasButtons={false}
-        hasSecondaryTitle={false}
-        hasTitleSpan={false}
-      />
+      <BannerTop titleKey={"standings"} hasButtons={false} hasSecondaryTitle={false} hasTitleSpan={false} />
 
       <div className="standings-page-wrapper">
         <div className="standings-table-wrapper">
@@ -109,20 +104,11 @@ const Standings = () => {
                   {standings && standings.length > 0
                     ? standings.slice(0, 9).map((team) => {
                         return (
-                          <tr
-                            key={team.team.id}
-                            className={"rank" + team.position}
-                          >
-                            <td className={`rank rank${team.position}`}>
-                              {team.position}
-                            </td>
+                          <tr key={team.team.id} className={"rank" + team.position}>
+                            <td className={`rank rank${team.position}`}>{team.position}</td>
                             <td className="club">
                               <a className="table-club-link" href="">
-                                <img
-                                  className="table-club-crest"
-                                  src={team.team.crest}
-                                  alt=""
-                                />
+                                <img className="table-club-crest" src={team.team.crest} alt="" />
                                 {formatTeamName(team.team.name)}
                               </a>
                             </td>
@@ -159,20 +145,11 @@ const Standings = () => {
                   {standings && standings.length > 0
                     ? standings.slice(9, 18).map((team) => {
                         return (
-                          <tr
-                            key={team.team.id}
-                            className={"rank" + team.position}
-                          >
-                            <td className={`rank rank${team.position}`}>
-                              {team.position}
-                            </td>
+                          <tr key={team.team.id} className={"rank" + team.position}>
+                            <td className={`rank rank${team.position}`}>{team.position}</td>
                             <td className="club">
                               <a className="table-club-link" href="">
-                                <img
-                                  className="table-club-crest"
-                                  src={team.team.crest}
-                                  alt=""
-                                />
+                                <img className="table-club-crest" src={team.team.crest} alt="" />
                                 {formatTeamName(team.team.name)}
                               </a>
                             </td>
@@ -210,20 +187,11 @@ const Standings = () => {
                 {standings && standings.length > 0
                   ? standings.map((team) => {
                       return (
-                        <tr
-                          key={team.team.id}
-                          className={"rank" + team.position}
-                        >
-                          <td className={`rank rank${team.position}`}>
-                            {team.position}
-                          </td>
+                        <tr key={team.team.id} className={"rank" + team.position}>
+                          <td className={`rank rank${team.position}`}>{team.position}</td>
                           <td className="club">
                             <a className="table-club-link" href="">
-                              <img
-                                className="table-club-crest"
-                                src={team.team.crest}
-                                alt=""
-                              />
+                              <img className="table-club-crest" src={team.team.crest} alt="" />
                               {formatTeamName(team.team.name)}
                             </a>
                           </td>

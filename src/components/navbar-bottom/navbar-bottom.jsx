@@ -25,9 +25,9 @@ const NavbarBottom = () => {
     Heracles: "https://www.heracles.nl/",
     Zwolle: "https://peczwolle.nl/",
     Sparta: "https://www.sparta-rotterdam.nl/",
-    "Willem II": "https://www.willem-ii.nl/",
-    RKC: "https://www.rkcwaalwijk.nl/",
-    "Almere City": "https://almerecity.nl/",
+    Telstar: "https://sctelstar.nl/",
+    Excelsior: "https://excelsiorrotterdam.nl/",
+    Volendam: "https://fcvolendam.nl/",
   };
 
   useEffect(() => {
@@ -76,11 +76,7 @@ const NavbarBottom = () => {
                       rel="noopener noreferrer"
                       className="navbar-bottom-link"
                     >
-                      <img
-                        className="navbar-bottom-link-image"
-                        src={team.crest}
-                        alt={"Logo for " + team.shortName}
-                      />
+                      <img className="navbar-bottom-link-image" src={team.crest} alt={"Logo for " + team.shortName} />
                     </a>
                   );
                 })
@@ -100,11 +96,7 @@ const NavbarBottom = () => {
             <div className="copyright-text-secondary">{copyrightText}</div>
           </div>
 
-          <img
-            className="copyright-logo"
-            src="assets/images/eredivisie-white.png"
-            alt=""
-          />
+          <img className="copyright-logo" src="assets/images/eredivisie-white.png" alt="" />
         </div>
       </div>
     </>
