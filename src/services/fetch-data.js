@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getFootballData = async (matchday) => {
     try {
-        const response = await axios.get('http://localhost:5000/api/football');
+        const response = await axios.get('/.netlify/functions/football');
         const data = response.data;
         const standings = data.standings;
         const teams = data.teams;

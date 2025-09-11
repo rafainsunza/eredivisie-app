@@ -48,12 +48,6 @@ app.get('/api/football', async (req, res) => {
             }
         });
 
-        // const matchStatsResponse = await axios.get(`${API_URL}/matches/499242`, {
-        //     headers: {
-        //         'X-Auth-Token': API_KEY,
-        //     }
-        // })
-
         const standings = standingsResponse.data.standings[0].table || [];
         const teams = teamsResponse.data.teams || [];
         const matches = matchesResponse.data.matches || [];
