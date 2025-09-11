@@ -1,6 +1,5 @@
 // netlify/functions/football.mjs
 import axios from 'axios';
-import 'dotenv/config'; // local testing with .env
 
 const API_KEY = process.env.FOOTBALL_API_KEY;
 const API_URL = 'https://api.football-data.org/v4';
