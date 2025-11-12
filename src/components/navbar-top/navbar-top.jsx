@@ -61,7 +61,7 @@ const NavbarTop = ({ setActivePage }) => {
     <div className="nav-wrapper">
       <nav className="nav-header">
         <div className="logo-wrapper">
-          <a href="">
+          <a href="https://eredivisie.nl/vriendenloterijeredivisie/" rel="noopener noreferrer" target="_blank">
             <img src="assets/images/eredivisie-white.png" className="logo" />
           </a>
 
@@ -83,14 +83,6 @@ const NavbarTop = ({ setActivePage }) => {
 
           <li className="nav-item">
             <a href="" className="nav-link schedule" onClick={() => setActivePage("schedule")}></a>
-          </li>
-
-          <li className="nav-item">
-            <a href="" className="nav-link clubs"></a>
-          </li>
-
-          <li className="nav-item">
-            <a href="" className="nav-link topscorers"></a>
           </li>
 
           <li className="nav-item">
